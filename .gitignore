@@ -19,8 +19,9 @@ process-board.json
 process-board.lock/
 LAUNCH.md
 
-content/
+content/devto-article-draft.md
 .claude/
+scripts/hall-of-gaps-tmp/
 
 packs/axiom-saas-starter-pack/
 

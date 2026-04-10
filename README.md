@@ -8,7 +8,26 @@
 
 Your AI doesn't just execute tasks. It learns from them, remembers what works, and evolves every day.
 
+![Axiom in action](assets/demo.svg)
+
 Axiom is a personal AI operating system built for developers who use Claude Code, Ollama, or any LLM. It wraps around your existing tools and adds a self-improving intelligence layer that no other framework provides.
+
+---
+
+## Try It In 5 Seconds — No Install
+
+Scan your repo for 2026 best-practice gaps right now. Zero install, just paste this:
+
+```bash
+npx axiom-check
+```
+
+You'll get a stylized terminal report in under 5 seconds with:
+- 12 gap rules covering Next.js, React, Supabase, Tailwind, TypeScript, and security
+- Severity-rated findings (HIGH / MEDIUM / LOW)
+- A shareable Axiom Score out of 100
+
+**Curious what the top 50 Next.js projects scored?** → [Read the Hall of Gaps report](content/hall-of-gaps.md)
 
 ---
 

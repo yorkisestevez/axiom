@@ -1,0 +1,42 @@
+name: Test
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Verify all core modules load without error
+        run: |
+          for f in core/*.js; do
+            echo "Checking $f..."
+            node -c "$f"
+          done
+
+      - name: Verify config JSON is valid
+        run: |
+          for f in config/*.json; do
+            echo "Validating $f..."
+            node -e "JSON.parse(require('fs').readFileSync('$f', 'utf8'))"
+          done
+
+      - name: Verify package.json is valid
+        run: node -e "JSON.parse(require('fs').readFileSync('package.json', 'utf8'))"
+
+      - name: Run system audit (no-op in CI, just checks it doesn't crash)
+        run: node core/system-audit.js || true

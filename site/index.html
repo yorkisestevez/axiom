@@ -812,6 +812,144 @@
 
     /* Packs */
     .packs { background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent); }
+
+    /* Checkout tiers */
+    .checkout {
+      padding: 6rem 2rem;
+      position: relative;
+      border-top: 1px solid var(--border);
+    }
+    .checkout .section-header p {
+      max-width: 640px;
+    }
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) { .checkout-grid { grid-template-columns: 1fr; } }
+
+    .checkout-tier {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .checkout-tier:hover {
+      border-color: var(--green);
+      transform: translateY(-2px);
+    }
+    .checkout-tier.featured {
+      border-color: var(--green);
+      box-shadow: 0 0 60px rgba(0, 255, 65, 0.12);
+    }
+
+    .tier-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 0.25rem;
+    }
+    .tier-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .tier-tagline {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      min-height: 2.8rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+    .tier-fee {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--green);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+    .tier-fee .fee-label {
+      color: var(--text-faint);
+      margin-right: 0.5rem;
+    }
+
+    .tier-features {
+      list-style: none;
+      margin: 0 0 1.75rem;
+      padding: 0;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .tier-features li {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      padding: 0.4rem 0;
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+    .tier-features li::before {
+      content: '▸';
+      color: var(--green);
+      flex-shrink: 0;
+    }
+
+    .tier-button {
+      display: block;
+      text-align: center;
+      padding: 0.875rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+    .tier-button:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+    .checkout-tier.featured .tier-button {
+      background: var(--green);
+      color: var(--bg);
+      border-color: var(--green);
+    }
+    .checkout-tier.featured .tier-button:hover {
+      background: transparent;
+      color: var(--green);
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
+    }
+
+    .tier-coins {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      letter-spacing: 0.08em;
+      flex-wrap: wrap;
+    }
+    .tier-coins span {
+      border: 1px solid var(--border);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+    }
     .pack-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1416,6 +1554,70 @@ Year: 2026 | Domains: <span class="ok">11</span> | Queries: <span class="ok">44<
             <p>Odds pipeline, injury tracking, model evaluation, Foundry-style analysis domains.</p>
             <div class="pack-price">$149</div>
             <a href="#notify">▹ Notify Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checkout Tiers -->
+    <section class="checkout" id="checkout">
+      <div class="container">
+        <div class="section-header">
+          <div class="label">// CHECKOUT</div>
+          <h2>Three ways to pay.</h2>
+          <p>Pick the checkout that fits you. Same product, same $49. The only difference is how you pay and how much ends up in fees vs in my bank account.</p>
+        </div>
+
+        <div class="checkout-grid">
+          <!-- STANDARD -->
+          <div class="checkout-tier">
+            <div class="tier-label">// Standard</div>
+            <div class="tier-name">Gumroad</div>
+            <div class="tier-tagline">Fastest checkout. Credit card, PayPal, Apple Pay, Google Pay.</div>
+            <div class="tier-fee"><span class="fee-label">FEE</span>10% + $0.50</div>
+            <ul class="tier-features">
+              <li>Instant access after purchase</li>
+              <li>Gumroad receipt + download email</li>
+              <li>30-day refund guarantee</li>
+              <li>Buyer protection included</li>
+            </ul>
+            <a href="https://yorkistevez.gumroad.com/l/axiom-saas-starter" target="_blank" rel="noopener" class="tier-button">▸ Buy via Gumroad</a>
+          </div>
+
+          <!-- DIRECT / STRIPE -->
+          <div class="checkout-tier featured">
+            <div class="tier-label">// Direct · Save 7%</div>
+            <div class="tier-name">Stripe</div>
+            <div class="tier-tagline">Credit card or USDC stablecoin. Direct checkout, lowest fees on cards.</div>
+            <div class="tier-fee"><span class="fee-label">FEE</span>1.5% (USDC) · 2.9% (card)</div>
+            <ul class="tier-features">
+              <li>Pay with card OR USDC stablecoin</li>
+              <li>USDC on Ethereum, Base, Polygon, Solana</li>
+              <li>Instant email delivery</li>
+              <li>Stripe receipt + buyer protection</li>
+            </ul>
+            <a href="#checkout-stripe" data-processor="stripe" class="tier-button">▸ Buy via Stripe</a>
+            <div class="tier-coins">
+              <span>CARD</span><span>USDC</span><span>USDT</span>
+            </div>
+          </div>
+
+          <!-- SOVEREIGN / CRYPTO -->
+          <div class="checkout-tier">
+            <div class="tier-label">// Sovereign · 0.5% fee</div>
+            <div class="tier-name">Crypto</div>
+            <div class="tier-tagline">Raw BTC, ETH, SOL and 300+ cryptocurrencies. Non-custodial, direct to wallet.</div>
+            <div class="tier-fee"><span class="fee-label">FEE</span>0.5% (NOWPayments)</div>
+            <ul class="tier-features">
+              <li>BTC, ETH, SOL, LTC, DOGE, and more</li>
+              <li>Non-custodial &mdash; goes direct to wallet</li>
+              <li>Automated download delivery</li>
+              <li>Privacy-first, no KYC under threshold</li>
+            </ul>
+            <a href="#checkout-crypto" data-processor="nowpayments" class="tier-button">▸ Buy with Crypto</a>
+            <div class="tier-coins">
+              <span>BTC</span><span>ETH</span><span>SOL</span><span>USDC</span><span>+296</span>
+            </div>
           </div>
         </div>
       </div>

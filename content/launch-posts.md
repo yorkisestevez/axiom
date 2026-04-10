@@ -1,6 +1,6 @@
 # Launch Posts — Day-of Assets
 
-Ready-to-paste content for launch day. Replace `[AUTOFILL]` stats with real numbers from `hall-of-gaps.md` after the scan completes.
+Ready-to-paste content for launch day. Replace `68` stats with real numbers from `hall-of-gaps.md` after the scan completes.
 
 ---
 
@@ -41,8 +41,11 @@ You can try the free scanner right now without installing anything:
 It scans your repo for 12 common 2026 best-practice gaps and gives you
 a score out of 100.
 
-I also ran it against the top 50 Next.js projects on GitHub. Average
-score was [AUTOFILL]/100. Writeup in the repo at content/hall-of-gaps.md.
+I also ran it against the top 48 Next.js projects on GitHub (vercel/next.js
+and 1 other failed to clone). Average score: 68/100. The kicker: 92% still
+use manual useMemo/useCallback even though React Compiler obsoleted it,
+and 38% of multi-tenant apps have no Row Level Security. Full writeup in
+the repo at content/hall-of-gaps.md.
 
 The whole thing is MIT, zero external dependencies. Works with Claude
 Code, Ollama, Cursor, or any LLM you already use.
@@ -121,7 +124,8 @@ npx axiom-check
 
 It checks 12 common 2026 gaps (RLS, Tailwind v4, Stripe Meters API, React Compiler, etc.) and gives you a score out of 100.
 
-I ran it against the top 50 Next.js repos. Average: [AUTOFILL]/100.
+I ran it against the top 48 Next.js repos. Average: 68/100.
+92% still use manual useMemo/useCallback.
 ```
 
 **Tweet 7:**
@@ -184,7 +188,7 @@ It's a self-improving framework that sits on top of any LLM (Claude Code, Ollama
 
 Plus a free standalone scanner (`npx axiom-check`) that grades any repo out of 100 based on 2026 best practices.
 
-I also ran the scanner against the top 50 Next.js projects on GitHub and wrote up what I found. Average score: [AUTOFILL]/100.
+I also ran the scanner against the top 50 Next.js projects on GitHub and wrote up what I found. Average score: 68/100.
 
 GitHub: github.com/yorkisestevez/axiom
 Free scanner: npx axiom-check

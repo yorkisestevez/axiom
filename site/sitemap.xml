@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://axiom-ai.netlify.app/</loc>
-    <lastmod>2026-04-10T08:02:25.344Z</lastmod>
+    <lastmod>2026-04-10T08:04:04.644Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/</loc>
-    <lastmod>2026-04-10T08:02:25.344Z</lastmod>
+    <lastmod>2026-04-10T08:04:04.644Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-10-05-vram-budgeting-local-llms.html</loc>
-    <lastmod>2026-04-10T08:02:25.344Z</lastmod>
+    <lastmod>2026-04-10T08:04:04.644Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-10-04-multi-tenant-rls-patterns.html</loc>
-    <lastmod>2026-04-10T08:02:25.344Z</lastmod>
+    <lastmod>2026-04-10T08:04:04.644Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-10-03-react-compiler-usememo-migration.html</loc>
-    <lastmod>2026-04-10T08:02:25.344Z</lastmod>
+    <lastmod>2026-04-10T08:04:04.644Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-10-02-hall-of-gaps-nextjs.html</loc>
-    <lastmod>2026-04-10T08:02:25.344Z</lastmod>
+    <lastmod>2026-04-10T08:04:04.644Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-10-01-self-improving-ai-architecture.html</loc>
-    <lastmod>2026-04-10T08:02:25.344Z</lastmod>
+    <lastmod>2026-04-10T08:04:04.644Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

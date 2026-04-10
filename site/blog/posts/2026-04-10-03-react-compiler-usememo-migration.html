@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why React Compiler Makes useMemo Obsolete (and How to Migrate) // Axiom Blog</title>
+  <meta name="description" content="92% of top Next.js repos still use manual useMemo. Here's why React Compiler makes it redundant and how to migrate your codebase.">
+  <meta name="keywords" content="react, nextjs, performance, javascript">
+  <link rel="canonical" href="https://axiom-ai.netlify.app/blog/posts/2026-04-10-03-react-compiler-usememo-migration.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Why React Compiler Makes useMemo Obsolete (and How to Migrate)">
+  <meta property="og:description" content="92% of top Next.js repos still use manual useMemo. Here's why React Compiler makes it redundant and how to migrate your codebase.">
+  <meta property="og:url" content="https://axiom-ai.netlify.app/blog/posts/2026-04-10-03-react-compiler-usememo-migration.html">
+  <meta property="og:image" content="https://axiom-ai.netlify.app/assets/og-image.svg">
+  <meta property="article:published_time" content="2026-04-10">
+  <meta property="article:author" content="Yorkis Estevez">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why React Compiler Makes useMemo Obsolete (and How to Migrate)">
+  <meta name="twitter:description" content="92% of top Next.js repos still use manual useMemo. Here's why React Compiler makes it redundant and how to migrate your codebase.">
+  <meta name="twitter:image" content="https://axiom-ai.netlify.app/assets/og-image.svg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Why React Compiler Makes useMemo Obsolete (and How to Migrate)","description":"92% of top Next.js repos still use manual useMemo. Here's why React Compiler makes it redundant and how to migrate your codebase.","datePublished":"2026-04-10","author":{"@type":"Person","name":"Yorkis Estevez","url":"https://github.com/yorkisestevez"},"publisher":{"@type":"Organization","name":"Axiom","url":"https://axiom-ai.netlify.app"},"image":"https://axiom-ai.netlify.app/assets/og-image.svg","mainEntityOfPage":"https://axiom-ai.netlify.app/blog/posts/2026-04-10-03-react-compiler-usememo-migration.html"}</script>
+  <link rel="stylesheet" href="../blog.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="blog-nav">
+    <a href="/" class="brand">AXIOM_OS</a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://github.com/yorkisestevez/axiom">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="blog-post">
+    <article>
+      <header class="post-header">
+        <div class="post-meta">
+          <span class="post-date">2026-04-10</span>
+          <span class="post-tags"><span>react</span><span>nextjs</span><span>performance</span><span>javascript</span></span>
+        </div>
+        <h1>Why React Compiler Makes useMemo Obsolete (and How to Migrate)</h1>
+        <p class="post-description">92% of top Next.js repos still use manual useMemo. Here's why React Compiler makes it redundant and how to migrate your codebase.</p>
+      </header>
+      <div class="post-body">
+        <h1>Why React Compiler Makes useMemo Obsolete (and How to Migrate)</h1>
+<p>When I scanned the top 48 Next.js projects on GitHub, <strong>92% still used manual <code>useMemo</code> or <code>useCallback</code></strong>. Every one of those calls is either redundant or actively worse than what React Compiler would do automatically.</p>
+<p>Here's why, and how to migrate your codebase in an afternoon.</p>
+<h2>The Old Mental Model</h2>
+<p>Before React Compiler, the recommended pattern was:</p>
+<p><pre><code class="language-javascript">function ProductList({ items, filter }) {
+  const filteredItems = useMemo(
+    () =&gt; items.filter(item =&gt; item.category === filter),
+    [items, filter]
+  );
+
+  const handleClick = useCallback((id) =&gt; {
+    analytics.track('item_click', { id });
+  }, []);
+
+  return (
+    &lt;ul&gt;
+      {filteredItems.map(item =&gt; (
+        &lt;Item key={item.id} item={item} onClick={handleClick} /&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+</code></pre></p>
+<p>You memoized expensive computations with <code>useMemo</code>. You memoized callbacks with <code>useCallback</code> to avoid triggering child re-renders. It worked, but:</p>
+<ul><li><strong>It's noisy.</strong> Half your component is ceremony, not logic.</li><li><strong>It's error-prone.</strong> Wrong dependency arrays cause stale closures. Extra dependencies cause unnecessary recomputation.</li><li><strong>It's often wrong.</strong> Memoization has overhead. If your computation is cheap, <code>useMemo</code> can make things slower.</li></ul>
+<h2>What React Compiler Does</h2>
+<p>React Compiler analyzes your component at build time and automatically memoizes everything that benefits from it. The compiler knows:</p>
+<ul><li>Which values are actually used in the render path</li><li>Which dependencies actually change</li><li>Whether memoization is worth the overhead</li><li>How to handle stable references without manual dependency arrays</li></ul>
+With the compiler, the same component becomes:
+<p><pre><code class="language-javascript">function ProductList({ items, filter }) {
+  const filteredItems = items.filter(item =&gt; item.category === filter);
+
+  const handleClick = (id) =&gt; {
+    analytics.track('item_click', { id });
+  };
+
+  return (
+    &lt;ul&gt;
+      {filteredItems.map(item =&gt; (
+        &lt;Item key={item.id} item={item} onClick={handleClick} /&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+</code></pre></p>
+<p>Cleaner. Safer. Often faster, because the compiler makes better memoization decisions than you can by reading the code.</p>
+<h2>When Manual Memoization is Still Useful</h2>
+<p>Almost never. The edge cases are:</p>
+<ol><li><strong>Extremely expensive computations</strong> where you want to control exactly when they run (rare — usually you want a worker or Suspense).</li><li><strong>Third-party libraries that expect stable references</strong> and you can't modify them.</li><li><strong>Legacy codebases</strong> where you can't enable the compiler yet.</li></ol>
+For everything else, remove the memoization and let the compiler do its job.
+<h2>How To Enable React Compiler</h2>
+<strong>For Next.js 15+:</strong>
+<p><pre><code class="language-javascript">// next.config.js
+module.exports = {
+  experimental: {
+    reactCompiler: true
+  }
+};
+</code></pre></p>
+<strong>For Vite:</strong>
+<p><pre><code class="language-javascript">// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [
+    react({
+      babel: {
+        plugins: [['babel-plugin-react-compiler', {}]]
+      }
+    })
+  ]
+});
+</code></pre></p>
+<p>Install the Babel plugin if it's not already there:</p>
+<p><pre><code class="language-bash">npm install --save-dev babel-plugin-react-compiler
+</code></pre></p>
+<h2>The Migration Plan</h2>
+<p>You don't need to rip out all your <code>useMemo</code>/<code>useCallback</code> calls at once. The compiler is backwards-compatible — existing memoization still works.</p>
+<p>Here's the pragmatic path:</p>
+<ol><li><strong>Enable the compiler</strong> (one config change)</li><li><strong>Run your test suite</strong> — nothing should break</li><li><strong>Pick one component</strong> you're about to refactor anyway</li><li><strong>Remove all the manual memoization</strong> in that component</li><li><strong>Verify</strong> it still works (tests + manual check)</li><li><strong>Commit</strong></li><li><strong>Repeat</strong></li></ol>
+After a few weeks, your codebase looks modern and you're done.
+<h2>The Axiom Way</h2>
+<p>If you don't want to hunt down manual memoization by hand, run:</p>
+<p><pre><code class="language-bash">npx axiom-check
+</code></pre></p>
+<p>The free scanner counts your <code>useMemo</code>/<code>useCallback</code> calls and flags them as a LOW severity gap with an action item. It's one of 12 rules it checks.</p>
+<p>No install, 5 seconds, stylized terminal report.</p>
+<h2>What Else Changed in React 2026</h2>
+<p>React Compiler isn't the only thing. The App Router is stable. Server Components are the default. Server Actions replaced most API route boilerplate. If you're still writing code like it's 2023, you're not just missing <code>useMemo</code> optimizations — you're missing the whole paradigm shift.</p>
+<p>I wrote more about this in <a href="https://dev.to/yorkisestevez/hall-of-gaps-nextjs">my deep-dive on the 12 gaps hiding in top Next.js repos</a>.</p>
+<h2>Try It</h2>
+<p>Clone a side project. Enable React Compiler. Remove 20 <code>useMemo</code> calls. See if anything breaks.</p>
+<p>Nothing will. That's the point.</p>
+<hr>
+<em>Yorkis Estevez — SaaS builder, Axiom maintainer. Axiom is an open-source AI operating system. <a href="https://github.com/yorkisestevez/axiom">github.com/yorkisestevez/axiom</a></em>
+      </div>
+      <footer class="post-footer">
+        <div class="cta-box">
+          <p class="cta-label">// TRY IT NOW</p>
+          <pre><code>npx axiom-check</code></pre>
+          <p>Scan your repo for 2026 best-practice gaps. Zero install. Free. MIT licensed.</p>
+          <a href="https://github.com/yorkisestevez/axiom" class="btn">▸ View on GitHub</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <span>// BUILT BY <a href="https://github.com/yorkisestevez">YORKIS_ESTEVEZ</a></span>
+      <div class="links">
+        <a href="/blog/">Blog</a>
+        <a href="https://github.com/yorkisestevez/axiom">GitHub</a>
+        <span>MIT // 2026</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

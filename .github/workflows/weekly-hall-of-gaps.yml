@@ -1,0 +1,40 @@
+name: Weekly Hall of Gaps
+
+on:
+  schedule:
+    # Every Sunday at 6 AM EST (11:00 UTC)
+    - cron: '17 11 * * 0'
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Clone axiom-check as sibling
+        run: |
+          git clone --depth 1 https://github.com/yorkisestevez/axiom-check.git ../axiom-check
+
+      - name: Run weekly Hall of Gaps scan
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/hall-of-gaps-weekly.js
+
+      - name: Rebuild blog with new post
+        run: node scripts/build-blog.js
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/hall-of-gaps.md content/hall-of-gaps-archive/ content/hall-of-gaps-topics.json content/blog/ site/blog/ site/sitemap.xml content/reddit-post-hall-of-gaps.md
+          git diff --cached --quiet || git commit -m "chore: weekly hall of gaps scan [skip ci]"
+          git push

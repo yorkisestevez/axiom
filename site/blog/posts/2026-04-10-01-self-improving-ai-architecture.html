@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Built an AI That Gets Smarter Every Day — Here's the Architecture // Axiom Blog</title>
+  <meta name="description" content="Every AI agent framework in 2026 runs tasks but never learns from them. Here's a 6-layer architecture that does.">
+  <meta name="keywords" content="ai, nextjs, claude, opensource">
+  <link rel="canonical" href="https://axiom-ai.netlify.app/blog/posts/2026-04-10-01-self-improving-ai-architecture.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="I Built an AI That Gets Smarter Every Day — Here's the Architecture">
+  <meta property="og:description" content="Every AI agent framework in 2026 runs tasks but never learns from them. Here's a 6-layer architecture that does.">
+  <meta property="og:url" content="https://axiom-ai.netlify.app/blog/posts/2026-04-10-01-self-improving-ai-architecture.html">
+  <meta property="og:image" content="https://axiom-ai.netlify.app/assets/og-image.svg">
+  <meta property="article:published_time" content="2026-04-10">
+  <meta property="article:author" content="Yorkis Estevez">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="I Built an AI That Gets Smarter Every Day — Here's the Architecture">
+  <meta name="twitter:description" content="Every AI agent framework in 2026 runs tasks but never learns from them. Here's a 6-layer architecture that does.">
+  <meta name="twitter:image" content="https://axiom-ai.netlify.app/assets/og-image.svg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"I Built an AI That Gets Smarter Every Day — Here's the Architecture","description":"Every AI agent framework in 2026 runs tasks but never learns from them. Here's a 6-layer architecture that does.","datePublished":"2026-04-10","author":{"@type":"Person","name":"Yorkis Estevez","url":"https://github.com/yorkisestevez"},"publisher":{"@type":"Organization","name":"Axiom","url":"https://axiom-ai.netlify.app"},"image":"https://axiom-ai.netlify.app/assets/og-image.svg","mainEntityOfPage":"https://axiom-ai.netlify.app/blog/posts/2026-04-10-01-self-improving-ai-architecture.html"}</script>
+  <link rel="stylesheet" href="../blog.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="blog-nav">
+    <a href="/" class="brand">AXIOM_OS</a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://github.com/yorkisestevez/axiom">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="blog-post">
+    <article>
+      <header class="post-header">
+        <div class="post-meta">
+          <span class="post-date">2026-04-10</span>
+          <span class="post-tags"><span>ai</span><span>nextjs</span><span>claude</span><span>opensource</span></span>
+        </div>
+        <h1>I Built an AI That Gets Smarter Every Day — Here's the Architecture</h1>
+        <p class="post-description">Every AI agent framework in 2026 runs tasks but never learns from them. Here's a 6-layer architecture that does.</p>
+      </header>
+      <div class="post-body">
+        <h1>I Built an AI That Gets Smarter Every Day — Here's the Architecture</h1>
+<p>I run 15 projects. My AI kept forgetting what worked.</p>
+<p>Every session started from scratch. Patterns I discovered on Monday were gone by Wednesday. A bug I fixed in one project would show up in another. Research I did on new frameworks disappeared into browser bookmarks.</p>
+<p>So I built <strong><a href="https://github.com/yorkisestevez/axiom">Axiom</a></strong> — an AI operating system that actually learns from what I build.</p>
+<h2>The Problem Nobody's Solving</h2>
+<p>Every AI agent framework in 2026 does the same thing: take a task, execute it, forget it. LangChain, CrewAI, AutoGPT — they're all stateless. They don't remember what worked. They don't learn from failures. They don't research new patterns and apply them to your code.</p>
+<p>I needed something different. I needed an AI that:</p>
+<ul><li>Researches new patterns daily and tells me about them</li><li>Remembers findings using spaced repetition (not just a text file I never read)</li><li>Detects when my code is behind current best practices</li><li>Notices when a pattern I use in one project is missing from another</li><li>Captures failures and re-checks if they're still present</li><li>Extracts successful build patterns into reusable skills automatically</li></ul>
+<h2>The Architecture: 6 Layers</h2>
+<p>I built Axiom as a layered system. Each layer has a clear job:</p>
+<p><pre><code class="language-">Layer 5: Learning       — Knowledge Accelerator, Spaced Repetition, Gap Detector
+Layer 4: Intelligence   — Auto-Skill Extraction, Self-Modification, Cross-Project Sync
+Layer 3: Operations     — Process Registry, VRAM Management, Port Management
+Layer 2: Knowledge      — Wiki Vault, Build Journal, Staging System
+Layer 1: Execution      — Works with any LLM (Claude, Ollama, Gemini, local models)
+Layer 0: Hardware       — GPU VRAM Budgeting, RAM Headroom, Disk Monitoring
+</code></pre></p>
+<h3>Layer 5: The Learning Loop</h3>
+<p>The <strong>Knowledge Accelerator</strong> runs daily. It searches the web across 11 domains (full-stack, AI engineering, SaaS architecture, cybersecurity, etc.) and distills findings into actionable briefs.</p>
+<p>But here's the thing — reading a brief once doesn't mean you remember it. So findings feed into a <strong>Spaced Repetition</strong> engine that resurfaces them at day 1, 3, 7, and 14. By day 14, the pattern is either in your long-term memory or you've decided it's not relevant.</p>
+<p>The <strong>Gap Detector</strong> takes it further: it cross-references research findings against your actual codebase. "The Knowledge Accelerator found that React Compiler handles memoization automatically — you have 47 manual useMemo calls."</p>
+<h3>Layer 4: Self-Improving Intelligence</h3>
+<strong>Auto-Skill Extraction</strong> watches your build journal. When a pattern appears in 2+ successful builds, it automatically generates a reusable SKILL.md file. Your AI literally evolves from experience.
+<strong>Self-Modification</strong> does the same for corrections. If you correct your AI twice about the same thing ("don't use inline styles", "don't use inline styles"), it auto-promotes that to a permanent rule — but through a staging system you review first. It never modifies its own config without your approval.
+<strong>Cross-Project Sync</strong> detects when a pattern used in one project (like Supabase RLS tenant isolation) is missing from another project that should have it.
+<h3>Layer 3: Hardware Awareness</h3>
+<p>This is what nobody else builds. Axiom knows your GPU.</p>
+<p>I run an RTX 5070 with 12 GB VRAM and 22 Ollama models. The <strong>Process Registry</strong> tracks which models are loaded, how much VRAM they're using, and whether there's room for more. It uses a mutex-based locking system so two processes can't load models simultaneously and crash each other.</p>
+<p>Before any operation that touches local models, Axiom checks: "Do I have VRAM budget for this?"</p>
+<h3>Layer 2: Knowledge That Persists</h3>
+<p>An Obsidian-compatible wiki with a staging system. AI models propose changes, you review and approve. Git-versioned so nothing is ever lost.</p>
+<p>The <strong>Build Journal</strong> logs every session: what was built, what patterns were used, what files were touched. Over time, you build a searchable knowledge base. "How did I handle authentication in that project 3 months ago?" — one command.</p>
+<h2>What This Looks Like in Practice</h2>
+<p>Every morning at 6 AM, the Knowledge Accelerator researches 3-4 domains. By 7 AM, my morning briefing includes:</p>
+<ul><li>New findings from overnight research</li><li>Spaced repetition reviews (patterns due for reinforcement)</li><li>Failure watch (unresolved issues across projects)</li><li>Skill count (39 skills, 3 auto-generated this month)</li><li>Learning brief link (full details if I want to dive deeper)</li></ul>
+When I sit down to build, I'm not starting from scratch. I know what's new in my stack. I know what gaps exist in my code. I know what patterns from Project A should be in Project B.
+<h2>The Numbers</h2>
+<ul><li>14 core modules</li><li>11 research domains, 44 daily search queries</li><li>39+ skills (and growing automatically)</li><li>Zero external dependencies (Node.js built-ins only)</li><li>Works with any LLM: Claude Code, Ollama, Gemini, GPT</li></ul>
+<h2>Try The Free Scanner Right Now</h2>
+<p>Before diving into the full framework, try the free scanner. Zero install:</p>
+<p><pre><code class="language-bash">npx axiom-check
+</code></pre></p>
+<p>It scans your current repo for 12 common 2026 best-practice gaps and gives you a score out of 100.</p>
+<p>I ran it against the top 48 Next.js projects on GitHub — <strong>average score was 68/100</strong>. Writeup in the repo.</p>
+<h2>It's Open Source</h2>
+<strong>GitHub:</strong> <a href="https://github.com/yorkisestevez/axiom">github.com/yorkisestevez/axiom</a>
+<p>If you're tired of your AI forgetting what works, give it a shot. And if you build something cool with it, open a PR.</p>
+<hr>
+<em>Built by Yorkis Estevez. I build SaaS products and AI systems in Toronto. Axiom is how I manage 15 projects without losing my mind.</em>
+      </div>
+      <footer class="post-footer">
+        <div class="cta-box">
+          <p class="cta-label">// TRY IT NOW</p>
+          <pre><code>npx axiom-check</code></pre>
+          <p>Scan your repo for 2026 best-practice gaps. Zero install. Free. MIT licensed.</p>
+          <a href="https://github.com/yorkisestevez/axiom" class="btn">▸ View on GitHub</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <span>// BUILT BY <a href="https://github.com/yorkisestevez">YORKIS_ESTEVEZ</a></span>
+      <div class="links">
+        <a href="/blog/">Blog</a>
+        <a href="https://github.com/yorkisestevez/axiom">GitHub</a>
+        <span>MIT // 2026</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

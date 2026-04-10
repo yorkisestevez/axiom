@@ -1,0 +1,44 @@
+name: Dev.to Auto-Publish
+
+on:
+  schedule:
+    # Tuesday and Friday at 10 AM EST (15:00 UTC)
+    - cron: '13 15 * * 2,5'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (print, do not publish)'
+        required: false
+        default: 'false'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Publish next article
+        if: github.event.inputs.dry_run != 'true'
+        env:
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+        run: node scripts/devto-publish.js
+
+      - name: Dry run
+        if: github.event.inputs.dry_run == 'true'
+        run: node scripts/devto-publish.js --dry-run
+
+      - name: Commit updated state
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/devto-state.json
+          git diff --cached --quiet || git commit -m "chore: advance devto queue state [skip ci]"
+          git push

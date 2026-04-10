@@ -1,0 +1,16 @@
+{
+  "topics": [
+    { "name": "nextjs", "label": "Next.js" },
+    { "name": "supabase", "label": "Supabase" },
+    { "name": "react", "label": "React" },
+    { "name": "claude", "label": "Claude" },
+    { "name": "ollama", "label": "Ollama" },
+    { "name": "typescript", "label": "TypeScript" },
+    { "name": "tailwindcss", "label": "Tailwind CSS" },
+    { "name": "sveltekit", "label": "SvelteKit" },
+    { "name": "remix", "label": "Remix" },
+    { "name": "astro", "label": "Astro" }
+  ],
+  "current_index": 1,
+  "last_run": null
+}

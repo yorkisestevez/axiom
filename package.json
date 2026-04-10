@@ -6,6 +6,10 @@
   "bin": {
     "axiom": "./setup.js"
   },
+  "dependencies": {
+    "twitter-api-v2": "^1.18.2",
+    "marked": "^12.0.2"
+  },
   "scripts": {
     "setup": "node setup.js",
     "audit": "node core/system-audit.js",
@@ -14,7 +18,13 @@
     "snapshot": "node core/system-snapshot.js create",
     "gaps": "node core/gap-detector.js scan",
     "sync": "node core/cross-project-sync.js scan",
-    "research": "node core/knowledge-accelerator.js"
+    "research": "node core/knowledge-accelerator.js",
+    "build:blog": "node scripts/build-blog.js",
+    "post:twitter": "node scripts/twitter-post.js",
+    "post:twitter:dry": "node scripts/twitter-post.js --dry-run",
+    "post:devto": "node scripts/devto-publish.js",
+    "post:devto:dry": "node scripts/devto-publish.js --dry-run",
+    "scan:hall-of-gaps": "node scripts/hall-of-gaps-weekly.js"
   },
   "keywords": [
     "ai", "agent", "self-improving", "llm", "claude-code", "ollama",

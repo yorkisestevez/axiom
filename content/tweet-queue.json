@@ -1,0 +1,188 @@
+{
+  "tweets": [
+    {
+      "category": "hall-of-gaps",
+      "text": "I scanned the top 48 Next.js projects on GitHub for 2026 best-practice gaps.\n\nAverage score: 68/100\n\n92% still use manual useMemo/useCallback (React Compiler made it obsolete)\n90% use inline styles instead of Tailwind\n81% have console.log in production\n\nTry it: npx axiom-check"
+    },
+    {
+      "category": "hall-of-gaps",
+      "text": "92% of the top Next.js repos on GitHub still use manual useMemo/useCallback.\n\nReact Compiler handles memoization automatically in 2026.\n\nYou're writing code the machine would rather write for you.\n\nnpx axiom-check"
+    },
+    {
+      "category": "hall-of-gaps",
+      "text": "38% of the top Next.js repos that touch Supabase don't have Row Level Security.\n\nThat's a tenant data leak waiting to happen.\n\nScan yours: npx axiom-check"
+    },
+    {
+      "category": "hall-of-gaps",
+      "text": "Hall of Fame — cleanest Next.js repos I scanned:\n\n1. srbhr/Resume-Matcher — 86/100\n2. SigNoz/signoz — 85/100\n3. vercel/swr — 85/100\n4. appwrite/appwrite — 81/100\n5. dyad-sh/dyad — 80/100\n\nWhat's your score? npx axiom-check"
+    },
+    {
+      "category": "hall-of-gaps",
+      "text": "69% of top Next.js repos are still shipping Tailwind v3 deprecated class names.\n\nbg-gradient-to-* → bg-linear-to-*\nflex-shrink-0 → shrink-0\n\nThey'll break the day you upgrade to Tailwind v4.\n\nCheck yours: npx axiom-check"
+    },
+    {
+      "category": "feature",
+      "text": "Axiom's Knowledge Accelerator does web research daily across 11 domains.\n\nFindings go into a spaced repetition engine (day 1, 3, 7, 14).\n\nBy day 14 the pattern is either in your long-term memory or archived.\n\nThat's how you actually learn from research, not just bookmark it."
+    },
+    {
+      "category": "feature",
+      "text": "Every AI agent framework runs tasks. None of them learn from the outcomes.\n\nAxiom's Auto-Skill Extraction captures successful build patterns and turns them into reusable skills automatically.\n\nYour AI literally evolves from its own experience.\n\ngithub.com/yorkisestevez/axiom"
+    },
+    {
+      "category": "feature",
+      "text": "Axiom's Cross-Project Sync detects when a pattern in one project is missing from another.\n\nYou built RLS in Project A. Project B doesn't have it yet. The system flags it.\n\nNo more 'wait, didn't I solve this already?'"
+    },
+    {
+      "category": "feature",
+      "text": "Axiom is hardware-aware. It knows your GPU's VRAM budget, your loaded Ollama models, and your process registry.\n\nIt won't try to load an 18GB model when you have 12GB of VRAM.\n\nNo other agent framework does this."
+    },
+    {
+      "category": "feature",
+      "text": "Repeated corrections in Axiom auto-promote to permanent rules via a staging system.\n\nCorrect it twice, the system proposes a new rule for your review. Approve or reject.\n\nYour AI learns from its mistakes, then stops making them."
+    },
+    {
+      "category": "feature",
+      "text": "Axiom's wiki is git-versioned and Obsidian-compatible.\n\nAI models NEVER directly edit wiki files. All updates go through a staging system.\n\nYour knowledge is protected from model hallucination, while still benefiting from automation.\n\ngithub.com/yorkisestevez/axiom"
+    },
+    {
+      "category": "tip",
+      "text": "Tip: Enable FLASH_ATTENTION=1 in your Ollama startup.\n\nReduces KV cache by 5-10%. On a 12GB VRAM GPU, that's the difference between fitting a 7B model at 32K context or spilling to CPU.\n\n5-20x speedup for one env var."
+    },
+    {
+      "category": "tip",
+      "text": "Multi-tenant SaaS tip: Add RLS policies BEFORE you ship.\n\nRetrofitting tenant isolation later is 'rebuilding the foundation while people live in the house.'\n\nEvery tenant table needs RLS + a composite index on (tenant_id, created_at).\n\nnpx axiom-check flags this."
+    },
+    {
+      "category": "tip",
+      "text": "Stripe deprecated the legacy usage records API in 2025-03-31.\n\nIf you're still using create_usage_record, migrate to the Meters API before your integration breaks.\n\naxiom-check detects this: npx axiom-check"
+    },
+    {
+      "category": "tip",
+      "text": "Stop writing useMemo and useCallback by hand.\n\nReact Compiler handles memoization automatically. Your manual calls are either redundant or actively worse than what the compiler would do.\n\n2026 React codebases should have zero manual memoization."
+    },
+    {
+      "category": "tip",
+      "text": "Tip for Next.js App Router: Default to Server Components.\n\nOnly add 'use client' when you need useState, useEffect, event handlers, or browser APIs.\n\nMost of your 'use client' directives are unnecessary and shipping extra JS to users."
+    },
+    {
+      "category": "tip",
+      "text": "Every API route handler needs input validation at the boundary.\n\nUse Zod. Use safeParse, not parse. Return structured validation errors.\n\nNever trust the request body. Ever.\n\naxiom-check catches missing validation: npx axiom-check"
+    },
+    {
+      "category": "tip",
+      "text": "Error boundaries aren't optional in production React apps.\n\nOne uncaught error in billing shouldn't take down the whole app.\n\nAdd error.tsx to every route segment in Next.js App Router. Takes 5 minutes per route."
+    },
+    {
+      "category": "cta",
+      "text": "Scan your repo for 2026 best-practice gaps right now. Zero install:\n\nnpx axiom-check\n\nTakes 5 seconds. Returns a score out of 100 and 12 specific gaps.\n\nFree. MIT licensed.\n\ngithub.com/yorkisestevez/axiom"
+    },
+    {
+      "category": "cta",
+      "text": "Curious how your codebase scores?\n\nnpx axiom-check\n\nShare your score in the replies. I'll DM the folks with 90+ scores — I want to know what you're doing right."
+    },
+    {
+      "category": "cta",
+      "text": "Axiom is open source and MIT licensed.\n\nIf you've wanted an AI operating system that actually learns from every session, this is it.\n\n14 core modules. Zero external dependencies. Works with Claude Code, Ollama, any LLM.\n\ngithub.com/yorkisestevez/axiom"
+    },
+    {
+      "category": "cta",
+      "text": "The Axiom framework is free and open source.\n\nI monetize via domain packs — pre-built configs for specific verticals.\n\nSaaS Starter Pack: 5 skills, 3 research domains, 6 gap rules.\n\n$49 on Gumroad. Ships with Axiom.\n\nyorkistevez.gumroad.com/l/axiom-saas-starter"
+    },
+    {
+      "category": "philosophy",
+      "text": "The problem with every AI agent framework in 2026:\n\nThey run tasks. They don't learn from them.\n\nYou discover a pattern Monday → forget it by Wednesday. Same bugs across every project. Research evaporates into bookmarks.\n\nFine for demos. Useless for daily work."
+    },
+    {
+      "category": "philosophy",
+      "text": "Memory without retrieval is a journal.\nMemory without spaced repetition is a cache that expires.\nMemory without reinforcement is a hallucination waiting to happen.\n\nAxiom's learning stack has all three. That's why it actually gets smarter over time."
+    },
+    {
+      "category": "philosophy",
+      "text": "The unsexy truth about 'AI that learns':\n\nMost of it is just logging. Real learning requires:\n1. Capture\n2. Spaced review\n3. Pattern detection\n4. Promotion to rules\n5. Feedback on outcomes\n\nIf your framework skips any step, it's not learning — it's remembering."
+    },
+    {
+      "category": "philosophy",
+      "text": "Hot take: Most 'AI operating systems' on GitHub aren't operating systems.\n\nAn OS needs:\n- Process management (VRAM, RAM, CPU budgeting)\n- Knowledge persistence (not just context windows)\n- Self-modification with guardrails\n- Multi-agent coordination\n\nAxiom has all four."
+    },
+    {
+      "category": "philosophy",
+      "text": "The best AI tool isn't the one with the biggest model.\n\nIt's the one that remembers what worked yesterday, learned from today's mistakes, and is researching tomorrow's patterns while you sleep.\n\nThat's Axiom."
+    },
+    {
+      "category": "behind-the-scenes",
+      "text": "Built Axiom because I run 15 projects and my AI kept forgetting what worked.\n\nPatterns from Monday were gone by Wednesday. Research I did disappeared into bookmarks. Same bugs across different projects.\n\nSo I built a framework that actually remembers. Now it's open source."
+    },
+    {
+      "category": "behind-the-scenes",
+      "text": "Axiom is 14 core modules, zero external dependencies, 5,500 lines of Node.js.\n\nEvery line is there because I needed it for my own projects. Nothing built on speculation.\n\nOpen source because if it helps me, it might help you.\n\ngithub.com/yorkisestevez/axiom"
+    },
+    {
+      "category": "behind-the-scenes",
+      "text": "The axiom-check scanner was a Trojan horse.\n\nPeople use it because it's free and useful. Then they realize it's from a bigger framework that does 10x more.\n\nStarted with 12 rules. Ran it against the top 48 Next.js repos. Found patterns I didn't expect."
+    },
+    {
+      "category": "behind-the-scenes",
+      "text": "Every week, Axiom runs a Hall of Gaps scan against a different topic on GitHub.\n\nNext.js, Supabase, React, Claude Code, Ollama, TypeScript, Tailwind.\n\nResults publish to the Axiom blog automatically. You get fresh data on what's actually happening in real codebases every Sunday."
+    },
+    {
+      "category": "stats",
+      "text": "axiom-check rule #1 — Missing Row Level Security.\n\nSeverity: HIGH\n\nFound in 38% of top Next.js repos that use Supabase.\n\nThis is a tenant data leak waiting to happen. Add RLS policies before you ship.\n\nDetails: github.com/yorkisestevez/axiom-check"
+    },
+    {
+      "category": "stats",
+      "text": "axiom-check rule #2 — Hardcoded secrets.\n\nSeverity: HIGH\n\nFound in 25% of top Next.js repos.\n\nSK_LIVE_, PK_LIVE_, ghp_, AKIA... all detected with regex.\n\nMove them to .env. Add .env to .gitignore. Rotate the keys."
+    },
+    {
+      "category": "stats",
+      "text": "axiom-check rule #4 — Tailwind v3 deprecated classes.\n\nSeverity: MEDIUM\n\nFound in 69% of top Next.js repos.\n\nbg-gradient-to-* → bg-linear-to-*\nflex-shrink-0 → shrink-0\n\nWill break on v4 migration."
+    },
+    {
+      "category": "stats",
+      "text": "axiom-check rule #6 — TypeScript strict mode disabled.\n\nSeverity: MEDIUM\n\nFound in 15% of top Next.js repos.\n\nStrict mode in tsconfig catches half your runtime bugs at compile time. Turn it on."
+    },
+    {
+      "category": "stats",
+      "text": "axiom-check rule #9 — Manual useMemo/useCallback.\n\nSeverity: LOW\n\nFound in 92% of top Next.js repos.\n\nReact Compiler handles this automatically. Your manual memoization is either redundant or actively worse than the compiler."
+    },
+    {
+      "category": "learning",
+      "text": "Spaced repetition is proven science. Anki. Duolingo. SuperMemo.\n\nNobody applies it to AI learning.\n\nAxiom does: findings from daily research resurface at day 1, 3, 7, 14. By day 14 it's either in your long-term memory or archived."
+    },
+    {
+      "category": "learning",
+      "text": "The Feynman technique for AI:\n\n1. Your AI captures a successful build pattern\n2. Names it plainly\n3. Links it to the project + files it worked in\n4. Tests it against similar problems\n5. Promotes it to a reusable skill if it holds up\n\nThat's auto-skill extraction. That's Axiom."
+    },
+    {
+      "category": "learning",
+      "text": "Learning requires feedback.\n\nThe correction engine in Axiom tracks every 'no, that's wrong' you give it. After the same correction 2+ times, it auto-proposes a permanent rule for your config file.\n\nYou stop having to correct the same mistake. Ever."
+    },
+    {
+      "category": "community",
+      "text": "Axiom is MIT licensed, zero external dependencies, runs on any Node 18+.\n\nIf you have 10 minutes, clone it and run the setup wizard. If you have 1 minute, run npx axiom-check.\n\nFeedback, stars, PRs welcome.\n\ngithub.com/yorkisestevez/axiom"
+    },
+    {
+      "category": "community",
+      "text": "Open a PR with a new gap rule and I'll ship it.\n\nEvery week axiom-check gets better because someone in the community caught a pattern I missed.\n\nYour weird codebase is exactly what makes it stronger.\n\ngithub.com/yorkisestevez/axiom-check"
+    },
+    {
+      "category": "community",
+      "text": "Ran axiom-check against a repo and got a low score?\n\nThe score isn't a grade. It's a backlog.\n\nEach gap has a specific fix action you can knock out in an hour. Score climbs fast once you start."
+    },
+    {
+      "category": "roadmap",
+      "text": "Axiom roadmap:\n\n- Weekly Hall of Gaps scans (running)\n- Twitter/Dev.to auto-publishing (running)\n- AI Builder Pack ($99 pack for MCP + Ollama + agent patterns)\n- Sports Betting Pack ($149 pack for sports data + analysis)\n- Video course (Q2 2026)\n\ngithub.com/yorkisestevez/axiom"
+    },
+    {
+      "category": "roadmap",
+      "text": "Coming soon for Axiom checkout:\n\n- Stripe direct checkout (lower fees than Gumroad)\n- USDC stablecoin payments (Base, Solana, Ethereum)\n- Raw BTC/ETH/SOL via NOWPayments\n\nCurrent: Gumroad only. Follow for updates."
+    },
+    {
+      "category": "engagement",
+      "text": "Quick poll — what matters most in your AI tool?\n\nA) Speed\nB) Memory between sessions\nC) Code quality detection\nD) Cross-project sync\n\nReply with a letter. I'll build the thing most people pick into Axiom v2."
+    },
+    {
+      "category": "engagement",
+      "text": "What's the worst AI 'learning' you've ever seen?\n\nMe: A tool that stored every chat in a 10MB text file and called it 'memory.'\n\nReplies with the best examples.\n\n(This is why I built Axiom.)"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+name: Build Blog
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'content/blog/**'
+      - 'scripts/build-blog.js'
+      - 'site/blog/blog.css'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build blog from markdown
+        run: node scripts/build-blog.js
+
+      - name: Commit generated HTML
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/blog/ site/sitemap.xml
+          git diff --cached --quiet || git commit -m "chore: rebuild blog [skip ci]"
+          git push

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VRAM Budgeting for Local LLMs: The Missing Piece in Every AI Agent Framework // Axiom Blog</title>
+  <meta name="description" content="Every AI agent framework ignores your GPU. Here's how to build hardware-aware scheduling for local Ollama models on a 12GB RTX.">
+  <meta name="keywords" content="ai, ollama, opensource, llm">
+  <link rel="canonical" href="https://axiom-ai.netlify.app/blog/posts/2026-04-10-05-vram-budgeting-local-llms.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="VRAM Budgeting for Local LLMs: The Missing Piece in Every AI Agent Framework">
+  <meta property="og:description" content="Every AI agent framework ignores your GPU. Here's how to build hardware-aware scheduling for local Ollama models on a 12GB RTX.">
+  <meta property="og:url" content="https://axiom-ai.netlify.app/blog/posts/2026-04-10-05-vram-budgeting-local-llms.html">
+  <meta property="og:image" content="https://axiom-ai.netlify.app/assets/og-image.svg">
+  <meta property="article:published_time" content="2026-04-10">
+  <meta property="article:author" content="Yorkis Estevez">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VRAM Budgeting for Local LLMs: The Missing Piece in Every AI Agent Framework">
+  <meta name="twitter:description" content="Every AI agent framework ignores your GPU. Here's how to build hardware-aware scheduling for local Ollama models on a 12GB RTX.">
+  <meta name="twitter:image" content="https://axiom-ai.netlify.app/assets/og-image.svg">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"VRAM Budgeting for Local LLMs: The Missing Piece in Every AI Agent Framework","description":"Every AI agent framework ignores your GPU. Here's how to build hardware-aware scheduling for local Ollama models on a 12GB RTX.","datePublished":"2026-04-10","author":{"@type":"Person","name":"Yorkis Estevez","url":"https://github.com/yorkisestevez"},"publisher":{"@type":"Organization","name":"Axiom","url":"https://axiom-ai.netlify.app"},"image":"https://axiom-ai.netlify.app/assets/og-image.svg","mainEntityOfPage":"https://axiom-ai.netlify.app/blog/posts/2026-04-10-05-vram-budgeting-local-llms.html"}</script>
+  <link rel="stylesheet" href="../blog.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="blog-nav">
+    <a href="/" class="brand">AXIOM_OS</a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://github.com/yorkisestevez/axiom">GitHub</a>
+    </div>
+  </nav>
+
+  <main class="blog-post">
+    <article>
+      <header class="post-header">
+        <div class="post-meta">
+          <span class="post-date">2026-04-10</span>
+          <span class="post-tags"><span>ai</span><span>ollama</span><span>opensource</span><span>llm</span></span>
+        </div>
+        <h1>VRAM Budgeting for Local LLMs: The Missing Piece in Every AI Agent Framework</h1>
+        <p class="post-description">Every AI agent framework ignores your GPU. Here's how to build hardware-aware scheduling for local Ollama models on a 12GB RTX.</p>
+      </header>
+      <div class="post-body">
+        <h1>VRAM Budgeting for Local LLMs: The Missing Piece in Every AI Agent Framework</h1>
+<p>Name one AI agent framework that knows how much VRAM your GPU has. I'll wait.</p>
+<p>LangChain doesn't. CrewAI doesn't. AutoGPT doesn't. Every framework assumes you have infinite compute and gracefully crashes when you don't.</p>
+<p>If you run local models on a 12GB RTX like I do, you need hardware-aware scheduling. Here's how I built it in Axiom.</p>
+<h2>The Problem</h2>
+<p>I have an RTX 5070 with 12GB VRAM. I run 22 Ollama models. Some are 8GB loaded, some are 4GB. At any given time, I can fit maybe 2-3 models simultaneously before I start spilling into system RAM (5-20x slower) or OOM-crashing.</p>
+<p>Without coordination, things like this happen:</p>
+<ul><li>Claude Code spawns an agent that loads <code>qwen2.5-coder:32b</code> (18GB — already over budget)</li><li>My Telegram bot tries to answer a question with <code>deepseek-r1:14b</code> (9GB — can't load)</li><li>The overnight research task tries to load <code>llama3.1:70b</code> (40GB — never had a chance)</li><li>Ollama OOMs, crashes, and I lose the state of all three running tasks</li></ul>
+Fix: a process registry that knows your VRAM budget and refuses to load models that won't fit.
+<h2>The Data You Need</h2>
+<p>Before you can budget anything, you need to know:</p>
+<ol><li><strong>How much VRAM your GPU has</strong> (static — ask once at setup)</li><li><strong>How much VRAM each model uses when loaded</strong> (estimated per-model, with a table)</li><li><strong>What's currently loaded in Ollama</strong> (query <code>/api/ps</code> endpoint)</li><li><strong>Which processes declared they'd load which models</strong> (track ahead of actually loading)</li></ol>
+The first three are straightforward. The fourth is where most frameworks fall apart.
+<h2>The Architecture</h2>
+<p>I call it the <strong>Process Registry</strong>. It's a single JSON file plus a Node.js module that coordinates access:</p>
+<p><pre><code class="language-">process-board.json
+├── processes[]
+│   ├── id: &quot;scalper-1-12345&quot;
+│   ├── pid: 12345
+│   ├── models: [&quot;qwen2.5-coder:7b&quot;]
+│   ├── vramMB: 4800
+│   ├── mode: &quot;persistent&quot;
+│   └── lastHeartbeat: &quot;2026-04-10T03:00:00Z&quot;
+├── locks[]
+│   └── (file locks held by processes)
+└── vram
+    ├── totalMB: 12288
+    ├── estimatedUsedMB: 7958
+    └── models: { &quot;qwen2.5-coder:7b&quot;: 4800, &quot;gemma4:e4b&quot;: 3158 }
+</code></pre></p>
+<p>Every process that wants to load a model calls <code>canStart({ name, models })</code> first:</p>
+<p><pre><code class="language-javascript">const registry = require('./process-registry');
+
+const result = registry.canStart({
+  name: 'overnight-learner',
+  models: ['deepseek-r1:14b'],
+  mode: 'strict'
+});
+
+if (!result.ok) {
+  console.error(`Cannot start: ${result.reason}`);
+  process.exit(1);
+}
+
+// OK to proceed
+const { id } = registry.checkIn({ name: 'overnight-learner', ... });
+</code></pre></p>
+<p>The registry checks:</p>
+<ol><li>Is the VRAM budget exceeded? (total loaded + this new model ≤ 12GB?)</li><li>Are any required locks held by other processes?</li><li>Are any processes declared dead but haven't checked out?</li></ol>
+If the answer is "safe to load," it lets you proceed. Otherwise it returns a structured refusal.
+<h2>The Locking Problem</h2>
+<p>You can't just use <code>fs.writeFileSync</code> to update the process board — two processes hitting it at the same time will corrupt it.</p>
+<p>I use a <strong>mkdir-based mutex</strong> because <code>mkdir()</code> is atomic across POSIX and Windows:</p>
+<p><pre><code class="language-javascript">function withBoardLock(fn) {
+  const start = Date.now();
+  while (true) {
+    try {
+      fs.mkdirSync(BOARD_LOCK_DIR);
+      break;
+    } catch (e) {
+      if (e.code === 'EEXIST') {
+        // Lock held — check if it's stale
+        const age = Date.now() - fs.statSync(BOARD_LOCK_DIR).mtimeMs;
+        if (age &gt; BOARD_LOCK_STALE_MS) {
+          fs.rmdirSync(BOARD_LOCK_DIR);
+          continue;
+        }
+        if (Date.now() - start &gt; BOARD_LOCK_TIMEOUT_MS) {
+          throw new Error('Board lock timeout');
+        }
+        sleep(5);  // busy-wait briefly
+        continue;
+      }
+      throw e;
+    }
+  }
+  try {
+    return fn();  // critical section
+  } finally {
+    fs.rmdirSync(BOARD_LOCK_DIR);
+  }
+}
+</code></pre></p>
+<p><code>mkdir</code> succeeds only if the directory doesn't exist. That's the lock acquisition. <code>rmdir</code> releases it. If a process crashes while holding the lock, the staleness check auto-recovers after 10 seconds.</p>
+<p>Simple, portable, no native deps.</p>
+<h2>The Live VRAM Query</h2>
+<p>Estimates get stale. The ground truth is what Ollama is actually running:</p>
+<p><pre><code class="language-javascript">function queryOllamaVram() {
+  const raw = execSync('curl -s http://127.0.0.1:11434/api/ps', {
+    encoding: 'utf8',
+    timeout: 3000,
+    windowsHide: true
+  });
+  const data = JSON.parse(raw);
+  const models = {};
+  let totalUsedMB = 0;
+  for (const m of data.models) {
+    const vramMB = Math.round((m.size_vram || 0) / (1024 * 1024));
+    models[m.name] = vramMB;
+    totalUsedMB += vramMB;
+  }
+  return { models, totalUsedMB };
+}
+</code></pre></p>
+<p>Cache the result for 15 seconds to avoid hammering Ollama, but always re-query before any decision that matters. This is the difference between "my estimate says we're at 7GB" and "Ollama actually has 9GB loaded right now."</p>
+<h2>The Heartbeat System</h2>
+<p>Processes crash. If a process checks in to the registry and then dies without checking out, the registry will think its VRAM is still claimed forever.</p>
+<p>Solution: every checked-in process must heartbeat every 30 seconds. If its last heartbeat is older than 2x the TTL, the registry considers it dead and reclaims its resources:</p>
+<p><pre><code class="language-javascript">function cleanStale(board) {
+  const now = Date.now();
+  for (const [id, proc] of Object.entries(board.processes)) {
+    const heartbeatAge = now - new Date(proc.lastHeartbeat).getTime();
+    const staleMs = (proc.ttlSeconds || 120) * 2 * 1000;
+    const pidDead = proc.pid &amp;&amp; !isPidAlive(proc.pid);
+
+    if (pidDead || heartbeatAge &gt; staleMs) {
+      delete board.processes[id];
+    }
+  }
+}
+</code></pre></p>
+<p>Belt and suspenders: we check both the heartbeat AND whether the PID is actually alive. Either signal means the process is dead.</p>
+<h2>The Wiki Export</h2>
+<p>For visibility, the registry exports its current state to a human-readable markdown file in the wiki:</p>
+<p><pre><code class="language-markdown"># Process Board
+
+## Active Processes
+
+| Process | PID | Uptime | Models | VRAM | Mode |
+|---------|-----|--------|--------|------|------|
+| claude-code-session | 8472 | 45m | qwen2.5-coder:7b | 4.6 GB | batch |
+| overnight-learner | 9133 | 2h 12m | deepseek-r1:8b | 5.5 GB | persistent |
+
+## VRAM Budget
+
+**Total:** 12 GB | **Used:** ~10.1 GB | **Available:** ~1.9 GB
+</code></pre></p>
+<p>When I open Obsidian, I can see exactly what's running without touching the terminal. This has saved me from <code>ollama ps</code> a thousand times.</p>
+<h2>The Results</h2>
+<p>Since building this, I haven't had a single VRAM OOM crash in 3 months. Before, I was getting one every few days.</p>
+<p>The framework is 524 lines of pure Node.js, zero external dependencies. It's part of the <a href="https://github.com/yorkisestevez/axiom">Axiom open-source framework</a>.</p>
+<p>If you run local LLMs and don't have hardware-aware scheduling, you're playing Russian roulette with your GPU. Build this or steal it from Axiom — but build it.</p>
+<h2>Try It</h2>
+<p>Clone Axiom, run the setup wizard, and your local Ollama fleet becomes a managed system instead of a free-for-all:</p>
+<p><pre><code class="language-bash">git clone https://github.com/yorkisestevez/axiom.git ~/.axiom
+cd ~/.axiom
+node setup.js
+</code></pre></p>
+<p>Or scan your current repo for 2026 best-practice gaps right now, no install:</p>
+<p><pre><code class="language-bash">npx axiom-check
+</code></pre></p>
+<hr>
+<em>Yorkis Estevez — SaaS builder, Axiom maintainer. Running 22 Ollama models on an RTX 5070. Toronto.</em>
+      </div>
+      <footer class="post-footer">
+        <div class="cta-box">
+          <p class="cta-label">// TRY IT NOW</p>
+          <pre><code>npx axiom-check</code></pre>
+          <p>Scan your repo for 2026 best-practice gaps. Zero install. Free. MIT licensed.</p>
+          <a href="https://github.com/yorkisestevez/axiom" class="btn">▸ View on GitHub</a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <span>// BUILT BY <a href="https://github.com/yorkisestevez">YORKIS_ESTEVEZ</a></span>
+      <div class="links">
+        <a href="/blog/">Blog</a>
+        <a href="https://github.com/yorkisestevez/axiom">GitHub</a>
+        <span>MIT // 2026</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

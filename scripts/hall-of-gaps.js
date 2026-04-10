@@ -58,7 +58,7 @@ function stripAnsi(str) {
 // ── Step 1: Fetch repo list via gh ───────────────────────────────
 function fetchRepos() {
   log(`▸ Fetching top ${LIMIT} ${TOPIC} repos via gh CLI...`, 'dim');
-  const cmd = `gh search repos --topic ${TOPIC} --limit ${LIMIT} --sort stars --json fullName,stargazerCount,url`;
+  const cmd = `gh search repos --topic ${TOPIC} --limit ${LIMIT} --sort stars --json fullName,stargazersCount,url`;
   const out = run(cmd);
   if (!out) {
     log('✗ Failed to fetch repos. Is `gh` authenticated?', 'red');
@@ -109,7 +109,7 @@ function scanRepo(repo) {
   return {
     fullName: repo.fullName,
     url: repo.url,
-    stars: repo.stargazerCount,
+    stars: repo.stargazersCount,
     score,
     findings,
     rawOutput: output
@@ -259,7 +259,7 @@ function main() {
   const results = [];
   for (let i = 0; i < repos.length; i++) {
     const repo = repos[i];
-    log(`[${i + 1}/${repos.length}] ${repo.fullName} (${repo.stargazerCount.toLocaleString()} stars)`, 'green');
+    log(`[${i + 1}/${repos.length}] ${repo.fullName} (${repo.stargazersCount.toLocaleString()} stars)`, 'green');
     try {
       const r = scanRepo(repo);
       if (r) results.push(r);

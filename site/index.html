@@ -848,6 +848,26 @@
       border-color: var(--green);
       box-shadow: 0 0 60px rgba(0, 255, 65, 0.12);
     }
+    .checkout-tier.coming {
+      opacity: 0.6;
+    }
+    .checkout-tier.coming:hover {
+      opacity: 0.85;
+      border-color: var(--green-dim);
+      transform: translateY(-2px);
+    }
+    .checkout-tier.coming .tier-label {
+      color: var(--text-faint);
+    }
+    .checkout-tier.coming .tier-button {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+    .checkout-tier.coming .tier-button:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
 
     .tier-label {
       font-family: 'JetBrains Mono', monospace;
@@ -1569,9 +1589,9 @@ Year: 2026 | Domains: <span class="ok">11</span> | Queries: <span class="ok">44<
         </div>
 
         <div class="checkout-grid">
-          <!-- STANDARD -->
-          <div class="checkout-tier">
-            <div class="tier-label">// Standard</div>
+          <!-- GUMROAD — LIVE NOW -->
+          <div class="checkout-tier featured">
+            <div class="tier-label">// Available Now</div>
             <div class="tier-name">Gumroad</div>
             <div class="tier-tagline">Fastest checkout. Credit card, PayPal, Apple Pay, Google Pay.</div>
             <div class="tier-fee"><span class="fee-label">FEE</span>10% + $0.50</div>
@@ -1584,9 +1604,9 @@ Year: 2026 | Domains: <span class="ok">11</span> | Queries: <span class="ok">44<
             <a href="https://yorkistevez.gumroad.com/l/axiom-saas-starter" target="_blank" rel="noopener" class="tier-button">▸ Buy via Gumroad</a>
           </div>
 
-          <!-- DIRECT / STRIPE -->
-          <div class="checkout-tier featured">
-            <div class="tier-label">// Direct · Save 7%</div>
+          <!-- STRIPE — COMING SOON -->
+          <div class="checkout-tier coming">
+            <div class="tier-label">// Coming Soon</div>
             <div class="tier-name">Stripe</div>
             <div class="tier-tagline">Credit card or USDC stablecoin. Direct checkout, lowest fees on cards.</div>
             <div class="tier-fee"><span class="fee-label">FEE</span>1.5% (USDC) · 2.9% (card)</div>
@@ -1596,15 +1616,15 @@ Year: 2026 | Domains: <span class="ok">11</span> | Queries: <span class="ok">44<
               <li>Instant email delivery</li>
               <li>Stripe receipt + buyer protection</li>
             </ul>
-            <a href="#checkout-stripe" data-processor="stripe" class="tier-button">▸ Buy via Stripe</a>
+            <a href="#notify" class="tier-button">▹ Notify Me</a>
             <div class="tier-coins">
               <span>CARD</span><span>USDC</span><span>USDT</span>
             </div>
           </div>
 
-          <!-- SOVEREIGN / CRYPTO -->
-          <div class="checkout-tier">
-            <div class="tier-label">// Sovereign · 0.5% fee</div>
+          <!-- CRYPTO — COMING SOON -->
+          <div class="checkout-tier coming">
+            <div class="tier-label">// Coming Soon</div>
             <div class="tier-name">Crypto</div>
             <div class="tier-tagline">Raw BTC, ETH, SOL and 300+ cryptocurrencies. Non-custodial, direct to wallet.</div>
             <div class="tier-fee"><span class="fee-label">FEE</span>0.5% (NOWPayments)</div>
@@ -1614,7 +1634,7 @@ Year: 2026 | Domains: <span class="ok">11</span> | Queries: <span class="ok">44<
               <li>Automated download delivery</li>
               <li>Privacy-first, no KYC under threshold</li>
             </ul>
-            <a href="#checkout-crypto" data-processor="nowpayments" class="tier-button">▸ Buy with Crypto</a>
+            <a href="#notify" class="tier-button">▹ Notify Me</a>
             <div class="tier-coins">
               <span>BTC</span><span>ETH</span><span>SOL</span><span>USDC</span><span>+296</span>
             </div>

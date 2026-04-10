@@ -3,302 +3,1320 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Axiom — The Self-Improving AI Operating System</title>
-  <meta name="description" content="Your AI doesn't just execute tasks. It learns from them, remembers what works, and evolves every day. Open source framework for Claude Code, Ollama, and any LLM.">
-  <meta property="og:title" content="Axiom — The Self-Improving AI Operating System">
+  <title>AXIOM // The Self-Improving AI Operating System</title>
+  <meta name="description" content="A classified-level AI operating system that learns, remembers, and evolves on its own. Open source framework for Claude Code, Ollama, and any LLM.">
+  <meta property="og:title" content="AXIOM // The Self-Improving AI Operating System">
   <meta property="og:description" content="Your AI learns, remembers, and evolves. 14 core modules. Hardware-aware. Open source.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Axiom — The Self-Improving AI Operating System">
-  <meta name="twitter:description" content="Your AI learns, remembers, and evolves. 14 core modules. Hardware-aware. Open source.">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwindcss.config = {
-      theme: {
-        extend: {
-          colors: {
-            axiom: { 50: '#f0f4ff', 100: '#dbe4ff', 200: '#bac8ff', 400: '#748ffc', 500: '#4c6ef5', 600: '#3b5bdb', 700: '#364fc7', 900: '#1b2559' }
-          }
-        }
-      }
-    }
-  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-    body { font-family: 'Inter', sans-serif; }
-    .gradient-text { background: linear-gradient(135deg, #4c6ef5 0%, #748ffc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
-    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+    :root {
+      --bg: #000000;
+      --bg-elevated: rgba(4, 10, 4, 0.92);
+      --bg-raised: rgba(8, 14, 8, 0.95);
+      --border: #0f1f0f;
+      --border-hover: #1a3a1a;
+      --border-glow: #00ff4133;
+      --text: #d0ffd0;
+      --text-dim: #7a9a7a;
+      --text-faint: #3a4a3a;
+      --green: #00ff41;
+      --green-bright: #00ff6b;
+      --green-dim: #008f2f;
+      --cyan: #00ffff;
+      --red: #ff003c;
+      --amber: #ffcc00;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Matrix rain canvas */
+    #matrix-rain {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.15;
+    }
+
+    /* Scan lines overlay with subtle CRT flicker */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 255, 65, 0.02) 50%);
+      background-size: 100% 3px;
+      pointer-events: none;
+      z-index: 2;
+      animation: flicker 5s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      48% { opacity: 1; }
+      49% { opacity: 0.94; }
+      50% { opacity: 1; }
+      97% { opacity: 1; }
+      98% { opacity: 0.96; }
+      99% { opacity: 1; }
+    }
+
+    /* Radial vignette + content backing dim */
+    .vignette {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    main { position: relative; z-index: 10; }
+
+    /* Typography */
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    h1, h2, h3 { font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em; }
+
+    h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.05; }
+    h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; }
+    h3 { font-size: 1.125rem; font-weight: 600; }
+
+    .green { color: var(--green); }
+    .cyan { color: var(--cyan); }
+    .dim { color: var(--text-dim); }
+
+    /* Glow text — Matrix phosphor */
+    .glow {
+      text-shadow:
+        0 0 10px rgba(0, 255, 65, 0.9),
+        0 0 25px rgba(0, 255, 65, 0.7),
+        0 0 50px rgba(0, 255, 65, 0.5),
+        0 0 80px rgba(0, 255, 65, 0.3);
+    }
+
+    .glow-cyan {
+      text-shadow:
+        0 0 10px rgba(0, 255, 255, 0.8),
+        0 0 25px rgba(0, 255, 255, 0.5),
+        0 0 50px rgba(0, 255, 255, 0.3);
+    }
+
+    /* Glitch effect */
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .glitch::before {
+      color: var(--cyan);
+      z-index: -1;
+      animation: glitch-1 2s infinite;
+      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    }
+    .glitch::after {
+      color: var(--red);
+      z-index: -2;
+      animation: glitch-2 2s infinite;
+      clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+    }
+    @keyframes glitch-1 {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(-2px, 1px); }
+      40% { transform: translate(-1px, -1px); }
+      60% { transform: translate(2px, 1px); }
+    }
+    @keyframes glitch-2 {
+      0%, 100% { transform: translate(0); }
+      20% { transform: translate(2px, -1px); }
+      40% { transform: translate(1px, 2px); }
+      60% { transform: translate(-2px, -1px); }
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1rem 2rem;
+    }
+    nav .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .brand {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 1.125rem;
+      color: var(--green);
+      letter-spacing: 0.05em;
+    }
+    nav .brand::before { content: '> '; color: var(--text-dim); }
+    nav .links { display: flex; gap: 2rem; align-items: center; font-size: 0.875rem; }
+    nav .links a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    nav .links a:hover { color: var(--green); }
+    nav .cta {
+      background: var(--green);
+      color: var(--bg);
+      padding: 0.5rem 1.25rem;
+      border-radius: 2px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    nav .cta:hover {
+      box-shadow: 0 0 30px var(--green);
+      transform: translateY(-1px);
+    }
+
+    /* Sections */
+    section {
+      padding: 6rem 2rem;
+      position: relative;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 10rem;
+      padding-bottom: 6rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero .classified {
+      display: inline-block;
+      border: 1px solid var(--green);
+      color: var(--green);
+      padding: 0.4rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 2rem;
+      position: relative;
+      animation: pulse-border 3s infinite;
+    }
+    .hero .classified::before { content: '[ '; color: var(--text-dim); }
+    .hero .classified::after { content: ' ]'; color: var(--text-dim); }
+
+    @keyframes pulse-border {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.4); }
+      50% { box-shadow: 0 0 30px 5px rgba(0, 255, 65, 0.2); }
+    }
+
+    .hero h1 {
+      margin-bottom: 1.5rem;
+    }
+
+    .hero .tagline {
+      font-size: 1.25rem;
+      color: var(--text-dim);
+      max-width: 640px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+
+    .hero .buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--bg);
+      padding: 1rem 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      font-size: 0.875rem;
+      border: 1px solid var(--green);
+      transition: all 0.3s;
+      position: relative;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--green);
+      box-shadow: 0 0 40px rgba(0, 255, 65, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      padding: 1rem 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      font-size: 0.875rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .hero .compat {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 1rem;
+    }
+
+    /* Stats bar */
+    .stats {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 0;
+      margin-top: 4rem;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+    }
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    }
+
+    /* Terminal */
+    .terminal {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      box-shadow:
+        0 0 60px rgba(0, 255, 65, 0.1),
+        inset 0 0 60px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .terminal-header {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .terminal-dot {
+      width: 0.7rem; height: 0.7rem; border-radius: 50%;
+      background: var(--border);
+    }
+    .terminal-dot.red { background: #ff5f57; }
+    .terminal-dot.yellow { background: #febc2e; }
+    .terminal-dot.green { background: #28c840; }
+    .terminal-title {
+      margin-left: auto;
+      margin-right: 0.5rem;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+    }
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      color: var(--text);
+    }
+    .terminal-body .prompt { color: var(--green); }
+    .terminal-body .cmd { color: var(--cyan); }
+    .terminal-body .output { color: var(--text); }
+    .terminal-body .dim { color: var(--text-dim); }
+    .terminal-body .highlight { color: var(--green); font-weight: 600; }
+    .terminal-body .warn { color: var(--amber); }
+    .terminal-body .ok { color: var(--green); }
+
+    /* Cursor blink */
+    .cursor {
+      display: inline-block;
+      width: 0.6em;
+      height: 1em;
+      background: var(--green);
+      vertical-align: text-bottom;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* Install steps */
+    .install-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 900px) { .install-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 550px) { .install-grid { grid-template-columns: 1fr; } }
+
+    .step {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+    .step:hover { border-color: var(--green); }
+    .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--green);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75rem;
+    }
+    .step h3 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .step p {
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .step code {
+      display: block;
+      background: #000;
+      border: 1px solid var(--border);
+      padding: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--green);
+      border-radius: 2px;
+      word-break: break-all;
+      white-space: normal;
+      line-height: 1.5;
+    }
+
+    .install-command {
+      word-break: break-word;
+    }
+
+    /* Install command box */
+    .install-command {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--green);
+      padding: 1.5rem 2rem;
+      max-width: 720px;
+      margin: 2rem auto 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--green);
+      text-align: left;
+      position: relative;
+    }
+    .install-command::before {
+      content: '$ ';
+      color: var(--text-dim);
+    }
+    .install-command .copy-hint {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.75rem;
+      font-size: 0.65rem;
+      color: var(--text-faint);
+      letter-spacing: 0.1em;
+    }
+
+    /* Problem / Solution */
+    .problem {
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.4));
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; gap: 3rem; } }
+
+    .col-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.75rem;
+    }
+    .col-label.red { color: var(--red); }
+    .col-label.green { color: var(--green); }
+
+    .col-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .col-list { list-style: none; }
+    .col-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dim);
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.95rem;
+    }
+    .col-list li::before {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+    }
+    .col-list.negative li::before { content: '✕'; color: var(--red); flex-shrink: 0; }
+    .col-list.positive li::before { content: '▸'; color: var(--green); flex-shrink: 0; }
+
+    /* Features grid */
+    .features { background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent); }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-header .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+    .section-header p { color: var(--text-dim); max-width: 600px; margin: 1rem auto 0; }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 900px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .feature-grid { grid-template-columns: 1fr; } }
+
+    .feature {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--green);
+      transition: width 0.4s;
+    }
+    .feature:hover {
+      border-color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(0, 255, 65, 0.1);
+    }
+    .feature:hover::before { width: 100%; }
+    .feature .idx {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-bottom: 0.5rem;
+    }
+    .feature h3 {
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    .feature p {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* Architecture layers */
+    .architecture { padding: 6rem 2rem; }
+    .layers { max-width: 800px; margin: 0 auto; }
+    .layer {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .layer:hover { border-color: var(--green); }
+    .layer .layer-num {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+    .layer .layer-content {
+      color: var(--text-dim);
+    }
+    .layer .layer-content strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Packs */
+    .packs { background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent); }
+    .pack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) { .pack-grid { grid-template-columns: 1fr; } }
+
+    .pack {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .pack.available {
+      border-color: var(--green);
+      box-shadow: 0 0 40px rgba(0, 255, 65, 0.15);
+    }
+    .pack.coming {
+      opacity: 0.6;
+    }
+    .pack-badge {
+      position: absolute;
+      top: -0.75rem;
+      left: 1rem;
+      background: var(--green);
+      color: var(--bg);
+      padding: 0.25rem 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .pack-badge.coming { background: var(--text-dim); color: var(--bg); }
+    .pack-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+    .pack h3 {
+      color: var(--text);
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .pack p {
+      color: var(--text-dim);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      min-height: 4rem;
+    }
+    .pack-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--green);
+      margin-bottom: 1.5rem;
+    }
+    .pack a {
+      display: block;
+      text-align: center;
+      padding: 0.875rem;
+      background: var(--green);
+      color: var(--bg);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid var(--green);
+    }
+    .pack a:hover {
+      background: transparent;
+      color: var(--green);
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
+    }
+    .pack.coming a {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+    .pack.coming a:hover {
+      border-color: var(--green);
+      color: var(--green);
+      box-shadow: none;
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 8rem 2rem;
+      position: relative;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cta-section h2 {
+      margin-bottom: 1.5rem;
+    }
+    .cta-section p {
+      color: var(--text-dim);
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Email capture */
+    .email-form {
+      max-width: 500px;
+      margin: 2rem auto 0;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .email-form input {
+      flex: 1;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.875rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .email-form input::placeholder { color: var(--text-faint); }
+    .email-form input:focus { border-color: var(--green); }
+    .email-form button {
+      background: var(--green);
+      color: var(--bg);
+      border: 1px solid var(--green);
+      padding: 0.875rem 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .email-form button:hover {
+      background: transparent;
+      color: var(--green);
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
+    }
+    .email-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-faint);
+      margin-top: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+    footer .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-dim);
+    }
+    footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--green); }
+    footer .links { display: flex; gap: 1.5rem; }
+
+    /* Access denied ticker */
+    .ticker {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .ticker-track {
+      display: inline-block;
+      animation: ticker 30s linear infinite;
+    }
+    .ticker-track span { margin: 0 2rem; }
+    .ticker-track span::before { content: '◆'; color: var(--text-dim); margin-right: 1rem; }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Hide nav links on mobile */
+    @media (max-width: 768px) {
+      nav .links { display: none; }
+      nav .cta { font-size: 0.7rem; padding: 0.4rem 1rem; }
+    }
   </style>
 </head>
-<body class="bg-white text-gray-900">
+<body>
+  <canvas id="matrix-rain"></canvas>
+  <div class="vignette"></div>
 
-  <!-- Nav -->
-  <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b border-gray-100 z-50">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <span class="text-xl font-bold">Axiom</span>
-      <div class="flex gap-6 items-center text-sm">
-        <a href="#features" class="text-gray-600 hover:text-gray-900">Features</a>
-        <a href="#architecture" class="text-gray-600 hover:text-gray-900">Architecture</a>
-        <a href="#packs" class="text-gray-600 hover:text-gray-900">Domain Packs</a>
-        <a href="https://github.com/yorkisestevez/axiom" class="bg-axiom-900 text-white px-4 py-2 rounded-lg hover:bg-axiom-700 transition">GitHub</a>
+  <nav>
+    <div class="inner">
+      <span class="brand">AXIOM_OS</span>
+      <div class="links">
+        <a href="#features">Modules</a>
+        <a href="#install">Install</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#packs">Packs</a>
+        <a href="https://github.com/yorkisestevez/axiom" target="_blank" rel="noopener" class="cta">Access Code</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="pt-32 pb-20 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="inline-block bg-axiom-50 text-axiom-600 text-sm font-medium px-4 py-1.5 rounded-full mb-6">Open Source &middot; 14 Core Modules &middot; Works with Any LLM</div>
-      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-        Your AI doesn't just execute.<br><span class="gradient-text">It learns and evolves.</span>
-      </h1>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
-        Axiom is a self-improving AI operating system. It researches patterns daily, remembers what works, detects gaps in your code, and gets smarter with every build session.
-      </p>
-      <div class="flex gap-4 justify-center flex-wrap">
-        <a href="https://github.com/yorkisestevez/axiom" class="bg-axiom-900 text-white px-8 py-3.5 rounded-xl text-lg font-semibold hover:bg-axiom-700 transition">Get Started Free</a>
-        <a href="#demo" class="border-2 border-gray-200 text-gray-700 px-8 py-3.5 rounded-xl text-lg font-semibold hover:border-axiom-400 transition">Watch Demo</a>
-      </div>
-      <p class="text-sm text-gray-400 mt-4">Works with Claude Code, Ollama, Cursor, and any AI assistant</p>
-    </div>
-  </section>
+  <main>
 
-  <!-- Terminal Demo Placeholder -->
-  <section id="demo" class="pb-20 px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="bg-gray-900 rounded-2xl p-6 shadow-2xl">
-        <div class="flex gap-2 mb-4">
-          <div class="w-3 h-3 rounded-full bg-red-400"></div>
-          <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-          <div class="w-3 h-3 rounded-full bg-green-400"></div>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="classified">CLASSIFIED // OPEN SOURCE // NOW DECLASSIFIED</div>
+        <h1>
+          Your AI doesn't just<br>
+          <span class="glitch green" data-text="execute. It evolves.">execute. It evolves.</span>
+        </h1>
+        <p class="tagline">
+          AXIOM is a self-improving operating system for AI. It researches patterns while you sleep,
+          remembers what works, detects gaps in your code, and gets smarter with every build session.
+        </p>
+        <div class="buttons">
+          <a href="https://github.com/yorkisestevez/axiom" target="_blank" rel="noopener" class="btn-primary">▸ Get Started Free</a>
+          <a href="#demo" class="btn-secondary">▹ View Terminal</a>
         </div>
-        <pre class="text-green-400 text-sm leading-relaxed overflow-x-auto"><code>$ node setup.js
-
-  ╔═══════════════════════════════════════╗
-  ║   AXIOM — Self-Improving AI OS        ║
-  ║   Setup Wizard                        ║
-  ╚═══════════════════════════════════════╝
-
-Detecting GPU... Found: NVIDIA RTX 5070 (12288 MB VRAM)
-Detecting Ollama models... Found 8 model(s)
-
-$ node core/system-audit.js
-
-=== AXIOM SYSTEM AUDIT ===
-Ollama: RUNNING
-  Models loaded: qwen2.5-coder:7b (4696MB), gemma4:e4b (3262MB)
-  VRAM: 7958/12288 MB (65%)
-RAM: 14.4/31.8 GB free
-CPU: 3% load
-All systems nominal.
-
-$ node core/knowledge-accelerator.js
-
-=== KNOWLEDGE ACCELERATOR ===
-Year: 2026 | Domains: 11 | Queries: 44
-  [Full-Stack] [AI Engineering] [SaaS Architecture]
-  [Cybersecurity] [Web Design] [AI Latest] ...
-
-  Your AI just got smarter while you slept.</code></pre>
+        <p class="compat">// COMPATIBLE WITH: Claude Code · Ollama · Cursor · Any LLM</p>
       </div>
-    </div>
-  </section>
 
-  <!-- Problem/Solution -->
-  <section class="py-20 px-6 bg-gray-50">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-12">
-        <div>
-          <h2 class="text-sm font-bold text-red-500 uppercase tracking-wide mb-3">The Problem</h2>
-          <h3 class="text-2xl font-bold mb-4">Every AI framework runs tasks. None of them learn.</h3>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex gap-3"><span class="text-red-400">&#10005;</span> You discover a pattern, use it once, forget it next week</li>
-            <li class="flex gap-3"><span class="text-red-400">&#10005;</span> Same mistakes across different projects</li>
-            <li class="flex gap-3"><span class="text-red-400">&#10005;</span> No memory between sessions</li>
-            <li class="flex gap-3"><span class="text-red-400">&#10005;</span> Research findings disappear into bookmarks</li>
-            <li class="flex gap-3"><span class="text-red-400">&#10005;</span> No awareness of your hardware constraints</li>
-          </ul>
-        </div>
-        <div>
-          <h2 class="text-sm font-bold text-axiom-500 uppercase tracking-wide mb-3">The Solution</h2>
-          <h3 class="text-2xl font-bold mb-4">Axiom learns from every build session.</h3>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex gap-3"><span class="text-axiom-500">&#10003;</span> Daily research distilled into spaced repetition briefs</li>
-            <li class="flex gap-3"><span class="text-axiom-500">&#10003;</span> Patterns detected in one project, synced to others</li>
-            <li class="flex gap-3"><span class="text-axiom-500">&#10003;</span> Wiki knowledge base with version control</li>
-            <li class="flex gap-3"><span class="text-axiom-500">&#10003;</span> Successful builds auto-extracted as reusable skills</li>
-            <li class="flex gap-3"><span class="text-axiom-500">&#10003;</span> VRAM budgeting, process registry, port management</li>
-          </ul>
+      <div class="container" style="margin-top: 3rem;">
+        <div class="stats">
+          <div class="stats-grid">
+            <div>
+              <div class="stat-value">14</div>
+              <div class="stat-label">Core Modules</div>
+            </div>
+            <div>
+              <div class="stat-value">11</div>
+              <div class="stat-label">Research Domains</div>
+            </div>
+            <div>
+              <div class="stat-value">0</div>
+              <div class="stat-label">Dependencies</div>
+            </div>
+            <div>
+              <div class="stat-value">∞</div>
+              <div class="stat-label">Self Improvement</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Features Grid -->
-  <section id="features" class="py-20 px-6">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-4">14 Core Modules. One System.</h2>
-      <p class="text-gray-500 text-center mb-14 max-w-2xl mx-auto">Each module works independently or as part of the full stack. All open source. All configurable.</p>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#128218;</div>
-          <h3 class="font-bold mb-2">Knowledge Accelerator</h3>
-          <p class="text-sm text-gray-500">Daily web research across 11+ domains. Findings distilled into actionable briefs automatically.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#128257;</div>
-          <h3 class="font-bold mb-2">Spaced Repetition</h3>
-          <p class="text-sm text-gray-500">Key findings resurface at optimal intervals (day 1, 3, 7, 14). You actually retain what you learn.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#9881;</div>
-          <h3 class="font-bold mb-2">Auto-Skill Extraction</h3>
-          <p class="text-sm text-gray-500">Successful build patterns automatically become reusable skills. Your AI evolves from experience.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#128736;</div>
-          <h3 class="font-bold mb-2">Self-Modification</h3>
-          <p class="text-sm text-gray-500">Repeated corrections auto-promote to permanent rules. All through a staging system you control.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#128269;</div>
-          <h3 class="font-bold mb-2">Gap Detector</h3>
-          <p class="text-sm text-gray-500">Cross-references new patterns from research against your actual codebase. Finds what you're missing.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#128279;</div>
-          <h3 class="font-bold mb-2">Cross-Project Sync</h3>
-          <p class="text-sm text-gray-500">Detects patterns in one project that are missing from another. Keeps all projects at the same level.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#128680;</div>
-          <h3 class="font-bold mb-2">Failure Replay</h3>
-          <p class="text-sm text-gray-500">Captures failures with structured post-mortems. Periodically re-tests to prevent recurrence.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#128221;</div>
-          <h3 class="font-bold mb-2">Build Journal</h3>
-          <p class="text-sm text-gray-500">Searchable history of everything you've built. Pattern indexing across projects and sessions.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#127899;</div>
-          <h3 class="font-bold mb-2">Hardware-Aware</h3>
-          <p class="text-sm text-gray-500">VRAM budgeting, process registry, port management. Knows your GPU limits before you hit them.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#128190;</div>
-          <h3 class="font-bold mb-2">System Snapshots</h3>
-          <p class="text-sm text-gray-500">One-command portable backup of your entire AI config. Restore or migrate in seconds.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#128209;</div>
-          <h3 class="font-bold mb-2">Skill Registry</h3>
-          <p class="text-sm text-gray-500">Searchable index of all your skills with usage tracking. Know what you have before building new.</p>
-        </div>
-        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
-          <div class="text-2xl mb-3">&#128214;</div>
-          <h3 class="font-bold mb-2">Wiki Knowledge Base</h3>
-          <p class="text-sm text-gray-500">Git-versioned, Obsidian-compatible. Staging system ensures AI never overwrites your knowledge.</p>
-        </div>
+    <!-- Ticker -->
+    <div class="ticker">
+      <div class="ticker-track">
+        <span>SELF-IMPROVING</span><span>HARDWARE-AWARE</span><span>KNOWLEDGE ACCELERATOR</span><span>SPACED REPETITION</span><span>AUTO-SKILL EXTRACTION</span><span>SELF-MODIFICATION</span><span>CODEBASE GAP DETECTOR</span><span>CROSS-PROJECT SYNC</span><span>FAILURE REPLAY</span><span>WIKI KNOWLEDGE BASE</span>
+        <span>SELF-IMPROVING</span><span>HARDWARE-AWARE</span><span>KNOWLEDGE ACCELERATOR</span><span>SPACED REPETITION</span><span>AUTO-SKILL EXTRACTION</span><span>SELF-MODIFICATION</span><span>CODEBASE GAP DETECTOR</span><span>CROSS-PROJECT SYNC</span><span>FAILURE REPLAY</span><span>WIKI KNOWLEDGE BASE</span>
       </div>
     </div>
-  </section>
 
-  <!-- Architecture -->
-  <section id="architecture" class="py-20 px-6 bg-gray-50">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Layered Architecture</h2>
-      <div class="space-y-3 font-mono text-sm">
-        <div class="bg-axiom-100 border border-axiom-200 rounded-lg p-4 text-center">
-          <strong>Layer 5: Learning</strong> &mdash; Knowledge Accelerator, Spaced Repetition, Gap Detector
+    <!-- Terminal Demo -->
+    <section id="demo">
+      <div class="container">
+        <div class="section-header">
+          <div class="label">// LIVE TRANSMISSION</div>
+          <h2>Watch it think.</h2>
         </div>
-        <div class="bg-axiom-50 border border-axiom-200 rounded-lg p-4 text-center">
-          <strong>Layer 4: Intelligence</strong> &mdash; Auto-Skill Extraction, Self-Modification, Cross-Project Sync
-        </div>
-        <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
-          <strong>Layer 3: Operations</strong> &mdash; Process Registry, VRAM Management, Port Management
-        </div>
-        <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
-          <strong>Layer 2: Knowledge</strong> &mdash; Wiki Vault, Build Journal, Staging System
-        </div>
-        <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
-          <strong>Layer 1: Execution</strong> &mdash; Claude Code, Ollama, Gemini, GPT, any LLM
-        </div>
-        <div class="bg-gray-100 border border-gray-200 rounded-lg p-4 text-center">
-          <strong>Layer 0: Hardware</strong> &mdash; GPU VRAM Budgeting, RAM Headroom, Disk Monitoring
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">axiom@0x00 ~ /boot</span>
+          </div>
+          <div class="terminal-body">
+<span class="prompt">$</span> <span class="cmd">node setup.js</span>
+
+  <span class="highlight">╔═══════════════════════════════════════╗</span>
+  <span class="highlight">║   AXIOM — Self-Improving AI OS        ║</span>
+  <span class="highlight">║   Setup Wizard                        ║</span>
+  <span class="highlight">╚═══════════════════════════════════════╝</span>
+
+<span class="dim">Detecting GPU...</span> Found: <span class="ok">NVIDIA RTX 5070 (12288 MB VRAM)</span>
+<span class="dim">Detecting Ollama models...</span> Found: <span class="ok">8 models loaded</span>
+<span class="dim">Scanning projects...</span> <span class="ok">Ready.</span>
+
+<span class="prompt">$</span> <span class="cmd">node core/system-audit.js</span>
+
+<span class="highlight">=== AXIOM SYSTEM AUDIT ===</span>
+Ollama       <span class="ok">▸ RUNNING</span>
+  Models     qwen2.5-coder:7b (4.6GB), gemma4:e4b (3.2GB)
+  VRAM       7958 / 12288 MB <span class="ok">[65%]</span>
+RAM          14.4 / 31.8 GB <span class="ok">[45% free]</span>
+CPU          <span class="ok">3% load</span>
+Status       <span class="ok">ALL SYSTEMS NOMINAL</span>
+
+<span class="prompt">$</span> <span class="cmd">node core/knowledge-accelerator.js</span>
+
+<span class="highlight">=== KNOWLEDGE ACCELERATOR ===</span>
+Year: 2026 | Domains: <span class="ok">11</span> | Queries: <span class="ok">44</span>
+
+<span class="dim">[▸ Full-Stack Patterns]</span>     Next.js · React · Supabase · Tailwind v4
+<span class="dim">[▸ AI Engineering]</span>          Agents · MCP · Ollama · Claude
+<span class="dim">[▸ SaaS Architecture]</span>       Multi-tenant · Stripe · Billing
+<span class="dim">[▸ Cybersecurity]</span>           OWASP · Zero Trust · API Security
+<span class="dim">[▸ AI Latest & Greatest]</span>    New models · Real use cases
+<span class="dim">...</span>
+
+<span class="prompt">$</span> <span class="cmd">node core/gap-detector.js scan</span>
+
+<span class="warn">⚠</span> <span class="warn">4 gap(s) found in your codebase:</span>
+  <span class="warn">[MED]</span> Ollama without Flash Attention — free 10% VRAM
+  <span class="warn">[MED]</span> Missing error boundaries in app router
+  <span class="warn">[LOW]</span> Manual useMemo/useCallback (React Compiler handles this)
+  <span class="warn">[LOW]</span> Legacy Stripe usage records API — migrate to Meters
+
+<span class="prompt">$</span> <span class="cmd">_</span><span class="cursor"></span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Domain Packs -->
-  <section id="packs" class="py-20 px-6">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-4">Domain Packs</h2>
-      <p class="text-gray-500 text-center mb-14 max-w-2xl mx-auto">Pre-built configurations for specific verticals. Drop into your Axiom install and go.</p>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card-hover border-2 border-axiom-400 rounded-xl p-6 relative">
-          <div class="absolute -top-3 left-4 bg-axiom-500 text-white text-xs font-bold px-3 py-1 rounded-full">AVAILABLE NOW</div>
-          <div class="text-sm font-bold text-axiom-500 mb-2">STARTER</div>
-          <h3 class="text-xl font-bold mb-2">SaaS Starter Pack</h3>
-          <p class="text-gray-500 text-sm mb-4">Multi-tenant RLS, Stripe metered billing, PLG free tier, Zod validation, error handling. 5 skills + 3 domains + 6 gap rules.</p>
-          <div class="text-2xl font-bold mb-4">$49</div>
-          <a href="https://yorkistevez.gumroad.com/l/axiom-saas-starter" target="_blank" rel="noopener" class="block text-center bg-axiom-900 text-white py-2.5 rounded-lg hover:bg-axiom-700 transition text-sm font-semibold">Buy on Gumroad</a>
+    <!-- Install / How it Works -->
+    <section id="install">
+      <div class="container">
+        <div class="section-header">
+          <div class="label">// INSTALLATION</div>
+          <h2>Running in 5 minutes.</h2>
+          <p>Free, open source, zero external dependencies. Works on macOS, Linux, and Windows.</p>
         </div>
-        <div class="card-hover border-2 border-gray-100 rounded-xl p-6 opacity-75">
-          <div class="text-sm font-bold text-gray-400 mb-2">COMING SOON</div>
-          <h3 class="text-xl font-bold mb-2">AI Builder Pack</h3>
-          <p class="text-gray-500 text-sm mb-4">MCP server patterns, agent architecture, Ollama optimization, prompt engineering.</p>
-          <div class="text-2xl font-bold mb-4">$99</div>
-          <a href="#notify" class="block text-center border-2 border-gray-200 text-gray-700 py-2 rounded-lg hover:border-axiom-400 transition text-sm font-semibold">Notify Me</a>
+
+        <div class="install-command">
+          git clone https://github.com/yorkisestevez/axiom.git ~/.axiom &amp;&amp; cd ~/.axiom &amp;&amp; node setup.js
+          <span class="copy-hint">// PASTE THIS</span>
         </div>
-        <div class="card-hover border-2 border-gray-100 rounded-xl p-6 opacity-75">
-          <div class="text-sm font-bold text-gray-400 mb-2">COMING SOON</div>
-          <h3 class="text-xl font-bold mb-2">Sports Betting Pack</h3>
-          <p class="text-gray-500 text-sm mb-4">Odds pipeline, injury tracking, model evaluation, Foundry-style analysis domains.</p>
-          <div class="text-2xl font-bold mb-4">$149</div>
-          <a href="#notify" class="block text-center border-2 border-gray-200 text-gray-700 py-2 rounded-lg hover:border-axiom-400 transition text-sm font-semibold">Notify Me</a>
+
+        <div class="install-grid">
+          <div class="step">
+            <div class="step-num">/ STEP 01</div>
+            <h3>Clone the Repo</h3>
+            <p>Clone Axiom into a hidden .axiom folder in your home directory. Requires Node 18+ and Git.</p>
+            <code>git clone https://github.com/yorkisestevez/axiom.git ~/.axiom</code>
+          </div>
+          <div class="step">
+            <div class="step-num">/ STEP 02</div>
+            <h3>Run Setup Wizard</h3>
+            <p>Auto-detects your GPU, Ollama models, and asks about your projects. Creates your config.</p>
+            <code>cd ~/.axiom &amp;&amp; node setup.js</code>
+          </div>
+          <div class="step">
+            <div class="step-num">/ STEP 03</div>
+            <h3>Verify Install</h3>
+            <p>Runs a full system health check. You should see "ALL SYSTEMS NOMINAL."</p>
+            <code>node core/system-audit.js</code>
+          </div>
+          <div class="step">
+            <div class="step-num">/ STEP 04</div>
+            <h3>Add Domain Packs</h3>
+            <p>Optional: drop-in configs for specific verticals. Each pack includes its own SETUP.md.</p>
+            <code>node core/skill-registry.js scan</code>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="https://github.com/yorkisestevez/axiom/blob/master/INSTALL.md" target="_blank" rel="noopener" class="btn-secondary">▹ Full Installation Guide</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="py-20 px-6 bg-axiom-900 text-white">
-    <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">Ready to build an AI that evolves?</h2>
-      <p class="text-axiom-200 mb-8">Free and open source. Set up in 5 minutes. Works with any LLM.</p>
-      <div class="flex gap-4 justify-center flex-wrap">
-        <a href="https://github.com/yorkisestevez/axiom" class="bg-white text-axiom-900 px-8 py-3.5 rounded-xl text-lg font-semibold hover:bg-axiom-50 transition">Star on GitHub</a>
-        <a href="#notify" class="border-2 border-white/30 text-white px-8 py-3.5 rounded-xl text-lg font-semibold hover:border-white transition">Get Updates</a>
+    <!-- Problem / Solution -->
+    <section class="problem">
+      <div class="container">
+        <div class="two-col">
+          <div>
+            <div class="col-label red">// THE PROBLEM</div>
+            <h3 class="col-title">Every AI framework runs tasks.<br>None of them learn.</h3>
+            <ul class="col-list negative">
+              <li>Discover a pattern Monday. Forget it by Wednesday.</li>
+              <li>Same mistakes across every project you touch.</li>
+              <li>Zero memory between sessions. Zero context retained.</li>
+              <li>Research findings disappear into dead bookmarks.</li>
+              <li>No awareness of your GPU, VRAM, or running processes.</li>
+              <li>Corrections get logged but never become permanent rules.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="col-label green">// THE UPGRADE</div>
+            <h3 class="col-title">AXIOM learns from every build session.<br>Forever.</h3>
+            <ul class="col-list positive">
+              <li>Daily research distilled into spaced repetition briefs.</li>
+              <li>Patterns detected in one project, synced to others.</li>
+              <li>Wiki knowledge base with full version control.</li>
+              <li>Successful builds auto-extracted as reusable skills.</li>
+              <li>VRAM budgeting, process registry, port management.</li>
+              <li>Repeated corrections auto-promote to permanent rules.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Email Capture -->
-  <section id="notify" class="py-16 px-6">
-    <div class="max-w-xl mx-auto text-center">
-      <h3 class="text-xl font-bold mb-4">Get notified about new domain packs and updates</h3>
-      <form action="https://buttondown.com/api/emails/embed-subscribe/axiom" method="post" class="flex gap-3">
-        <input type="email" name="email" placeholder="your@email.com" required class="flex-1 px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-axiom-400">
-        <button type="submit" class="bg-axiom-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-axiom-700 transition">Subscribe</button>
-      </form>
-      <p class="text-xs text-gray-400 mt-3">No spam. One email per release. Unsubscribe anytime.</p>
-    </div>
-  </section>
+    <!-- Features -->
+    <section id="features" class="features">
+      <div class="container">
+        <div class="section-header">
+          <div class="label">// SYSTEM MODULES</div>
+          <h2>14 modules. One mind.</h2>
+          <p>Each module works standalone or as part of the full stack. Zero external dependencies. Fully configurable.</p>
+        </div>
 
-  <!-- Footer -->
-  <footer class="py-8 px-6 border-t border-gray-100">
-    <div class="max-w-6xl mx-auto flex justify-between items-center text-sm text-gray-400">
-      <span>Built by <a href="https://github.com/yorkisestevez" class="text-gray-600 hover:text-axiom-500">Yorkis Estevez</a></span>
-      <div class="flex gap-6">
-        <a href="https://github.com/yorkisestevez/axiom" class="hover:text-gray-600">GitHub</a>
-        <a href="#" class="hover:text-gray-600">Twitter</a>
-        <span>MIT License</span>
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="idx">/ 01</div>
+            <h3 class="green">Knowledge Accelerator</h3>
+            <p>Daily web research across 11+ domains. Findings distilled into actionable briefs automatically.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 02</div>
+            <h3 class="green">Spaced Repetition</h3>
+            <p>Key findings resurface at day 1, 3, 7, 14. You actually retain what you learn.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 03</div>
+            <h3 class="green">Auto-Skill Extraction</h3>
+            <p>Successful build patterns automatically become reusable skills. Your AI evolves from experience.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 04</div>
+            <h3 class="green">Self-Modification</h3>
+            <p>Repeated corrections auto-promote to permanent rules through a staging system you control.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 05</div>
+            <h3 class="green">Gap Detector</h3>
+            <p>Cross-references research findings against your actual codebase. Finds what you're missing.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 06</div>
+            <h3 class="green">Cross-Project Sync</h3>
+            <p>Detects patterns in one project that are missing from another. Keeps everything aligned.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 07</div>
+            <h3 class="green">Failure Replay</h3>
+            <p>Captures failures with post-mortems. Periodically re-tests to prevent recurrence.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 08</div>
+            <h3 class="green">Build Journal</h3>
+            <p>Searchable history of everything you've built. Pattern indexing across projects and sessions.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 09</div>
+            <h3 class="green">Hardware-Aware</h3>
+            <p>VRAM budgeting, process registry, port management. Knows your GPU limits before you hit them.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 10</div>
+            <h3 class="green">System Snapshots</h3>
+            <p>One-command portable backup of your entire AI config. Restore or migrate in seconds.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 11</div>
+            <h3 class="green">Skill Registry</h3>
+            <p>Searchable index of all your skills with usage tracking. Know what you have.</p>
+          </div>
+          <div class="feature">
+            <div class="idx">/ 12</div>
+            <h3 class="green">Wiki Knowledge Base</h3>
+            <p>Git-versioned, Obsidian-compatible. Staging system ensures AI never overwrites your knowledge.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section id="architecture" class="architecture">
+      <div class="container">
+        <div class="section-header">
+          <div class="label">// ARCHITECTURE</div>
+          <h2>Six layers. One mind.</h2>
+        </div>
+
+        <div class="layers">
+          <div class="layer">
+            <span class="layer-num">LAYER 05</span>
+            <div class="layer-content"><strong>LEARNING</strong>Knowledge Accelerator · Spaced Repetition · Gap Detector</div>
+          </div>
+          <div class="layer">
+            <span class="layer-num">LAYER 04</span>
+            <div class="layer-content"><strong>INTELLIGENCE</strong>Auto-Skill Extraction · Self-Modification · Cross-Project Sync</div>
+          </div>
+          <div class="layer">
+            <span class="layer-num">LAYER 03</span>
+            <div class="layer-content"><strong>OPERATIONS</strong>Process Registry · VRAM Management · Port Management</div>
+          </div>
+          <div class="layer">
+            <span class="layer-num">LAYER 02</span>
+            <div class="layer-content"><strong>KNOWLEDGE</strong>Wiki Vault · Build Journal · Staging System</div>
+          </div>
+          <div class="layer">
+            <span class="layer-num">LAYER 01</span>
+            <div class="layer-content"><strong>EXECUTION</strong>Claude Code · Ollama · Gemini · GPT · Any LLM</div>
+          </div>
+          <div class="layer">
+            <span class="layer-num">LAYER 00</span>
+            <div class="layer-content"><strong>HARDWARE</strong>GPU VRAM Budgeting · RAM Headroom · Disk Monitoring</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packs -->
+    <section id="packs" class="packs">
+      <div class="container">
+        <div class="section-header">
+          <div class="label">// DOMAIN PACKS</div>
+          <h2>Pre-built configurations.</h2>
+          <p>Drop-in modules for specific verticals. Skills, research domains, and gap rules tuned for your stack.</p>
+        </div>
+
+        <div class="pack-grid">
+          <div class="pack available">
+            <div class="pack-badge">Available Now</div>
+            <div class="pack-label">// Starter</div>
+            <h3>SaaS Starter Pack</h3>
+            <p>Multi-tenant RLS, Stripe metered billing, PLG free tier, Zod validation, error handling. 5 skills + 3 domains + 6 gap rules.</p>
+            <div class="pack-price">$49</div>
+            <a href="https://yorkistevez.gumroad.com/l/axiom-saas-starter" target="_blank" rel="noopener">▸ Buy on Gumroad</a>
+          </div>
+          <div class="pack coming">
+            <div class="pack-badge coming">Coming Soon</div>
+            <div class="pack-label">// Professional</div>
+            <h3>AI Builder Pack</h3>
+            <p>MCP server patterns, agent architecture, Ollama optimization, prompt engineering techniques.</p>
+            <div class="pack-price">$99</div>
+            <a href="#notify">▹ Notify Me</a>
+          </div>
+          <div class="pack coming">
+            <div class="pack-badge coming">Coming Soon</div>
+            <div class="pack-label">// Specialist</div>
+            <h3>Sports Betting Pack</h3>
+            <p>Odds pipeline, injury tracking, model evaluation, Foundry-style analysis domains.</p>
+            <div class="pack-price">$149</div>
+            <a href="#notify">▹ Notify Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="label">// INITIATE</div>
+        </div>
+        <h2>Ready for an AI<br><span class="green">that actually evolves?</span></h2>
+        <p>Free and open source. Set up in 5 minutes. Works with any LLM you already use.</p>
+        <div class="buttons" style="justify-content: center;">
+          <a href="https://github.com/yorkisestevez/axiom" target="_blank" rel="noopener" class="btn-primary">▸ Star on GitHub</a>
+          <a href="#notify" class="btn-secondary">▹ Get Updates</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Email Capture -->
+    <section id="notify" style="padding: 4rem 2rem;">
+      <div class="container">
+        <div class="section-header">
+          <div class="label">// SECURE CHANNEL</div>
+          <h2 style="font-size: 1.5rem;">Get notified about new packs and updates</h2>
+        </div>
+        <form action="https://buttondown.com/api/emails/embed-subscribe/axiom" method="post" class="email-form">
+          <input type="email" name="email" placeholder="your@email.com" required>
+          <button type="submit">▸ Subscribe</button>
+        </form>
+        <p class="email-note" style="text-align: center;">// NO SPAM · ONE MESSAGE PER RELEASE · UNSUBSCRIBE ANY TIME</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="inner">
+      <span>// BUILT BY <a href="https://github.com/yorkisestevez" target="_blank" rel="noopener">YORKIS_ESTEVEZ</a></span>
+      <div class="links">
+        <a href="https://github.com/yorkisestevez/axiom" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://yorkistevez.gumroad.com" target="_blank" rel="noopener">Gumroad</a>
+        <span>MIT // 2026</span>
       </div>
     </div>
   </footer>
+
+  <script>
+    // Matrix Digital Rain
+    (function() {
+      function init() {
+        const canvas = document.getElementById('matrix-rain');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        let width, height, columns, drops;
+        const fontSize = 16;
+        const chars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFabcdef<>/\\{}[]()';
+        const charArr = chars.split('');
+
+        function resize() {
+          width = canvas.width = window.innerWidth || document.documentElement.clientWidth;
+          height = canvas.height = window.innerHeight || document.documentElement.clientHeight;
+          columns = Math.max(1, Math.floor(width / fontSize));
+          drops = new Array(columns).fill(0).map(() => Math.random() * -100);
+        }
+
+        function draw() {
+          // Fade trail
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.06)';
+          ctx.fillRect(0, 0, width, height);
+
+          ctx.font = fontSize + "px 'JetBrains Mono', monospace";
+
+          for (let i = 0; i < drops.length; i++) {
+            const char = charArr[Math.floor(Math.random() * charArr.length)];
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
+
+            // Head of trail — bright white-green glowing leading character
+            if (Math.random() > 0.975) {
+              ctx.fillStyle = '#c0ffc0';
+              ctx.fillText(char, x, y);
+            } else {
+              // Body — phosphor green
+              ctx.fillStyle = '#00ff41';
+              ctx.fillText(char, x, y);
+            }
+
+            // Reset drop when it goes off-screen
+            if (y > height && Math.random() > 0.975) {
+              drops[i] = 0;
+            }
+            drops[i]++;
+          }
+        }
+
+        resize();
+        // Black initial fill
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, width, height);
+        window.addEventListener('resize', resize);
+
+        // setInterval runs reliably even when rAF is throttled
+        // 40ms = ~25fps, smooth enough and CPU-friendly
+        setInterval(draw, 40);
+      }
+
+      // Wait for DOM if needed
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
 
 </body>
 </html>

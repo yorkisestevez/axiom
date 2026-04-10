@@ -1,0 +1,19 @@
+{
+  "_comment": "VRAM estimates in MB for common Ollama models. Add your custom models here.",
+  "llama3.1:8b": 5000,
+  "llama3.1:70b": 40000,
+  "qwen2.5-coder:7b": 4800,
+  "qwen2.5-coder:14b": 9000,
+  "qwen2.5-coder:32b": 18000,
+  "qwen3:8b": 5200,
+  "deepseek-r1:8b": 5500,
+  "deepseek-r1:14b": 9000,
+  "deepseek-r1:32b": 18000,
+  "gemma3:4b": 3000,
+  "gemma4:e4b": 5200,
+  "mistral:7b": 4800,
+  "phi3:medium": 8000,
+  "codellama:7b": 4800,
+  "codellama:13b": 8500,
+  "_default": 5000
+}

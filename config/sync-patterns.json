@@ -1,0 +1,58 @@
+[
+  {
+    "id": "rls-policies",
+    "name": "Supabase Row Level Security",
+    "detect": "CREATE POLICY|rls|row_level_security",
+    "fileGlob": "*.{sql,ts,js}",
+    "shouldHave": [],
+    "reason": "Multi-tenant SaaS requires RLS for data isolation"
+  },
+  {
+    "id": "error-boundary",
+    "name": "React Error Boundaries",
+    "detect": "error\\.tsx|ErrorBoundary|componentDidCatch",
+    "fileGlob": "*.{tsx,jsx,ts}",
+    "shouldHave": [],
+    "reason": "Production apps need error boundaries to prevent full-page crashes"
+  },
+  {
+    "id": "loading-states",
+    "name": "Loading/Suspense States",
+    "detect": "loading\\.tsx|Suspense|Skeleton",
+    "fileGlob": "*.{tsx,jsx}",
+    "shouldHave": [],
+    "reason": "UX: users need feedback during data loading"
+  },
+  {
+    "id": "api-error-handling",
+    "name": "Consistent API Error Handling",
+    "detect": "catch.*error|ApiError|handleError|errorHandler",
+    "fileGlob": "*.{ts,js}",
+    "shouldHave": [],
+    "reason": "Every API route needs consistent error handling"
+  },
+  {
+    "id": "env-validation",
+    "name": "Environment Variable Validation",
+    "detect": "z\\.string|env\\.parse|validateEnv",
+    "fileGlob": "*.{ts,js}",
+    "shouldHave": [],
+    "reason": "Prevents runtime crashes from missing env vars"
+  },
+  {
+    "id": "rate-limiting",
+    "name": "API Rate Limiting",
+    "detect": "rateLimit|rate-limit|throttle|limiter",
+    "fileGlob": "*.{ts,js}",
+    "shouldHave": [],
+    "reason": "Production APIs need rate limiting for security and cost control"
+  },
+  {
+    "id": "input-validation",
+    "name": "Input Validation (Zod/Yup)",
+    "detect": "z\\.object|z\\.string|yup\\.object|schema\\.validate",
+    "fileGlob": "*.{ts,js}",
+    "shouldHave": [],
+    "reason": "All user input must be validated at API boundary"
+  }
+]

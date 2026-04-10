@@ -1,0 +1,33 @@
+{
+  "name": "axiom-ai-os",
+  "version": "1.0.0",
+  "description": "The Self-Improving AI Operating System. Your AI learns, remembers, and evolves.",
+  "main": "core/config.js",
+  "bin": {
+    "axiom": "./setup.js"
+  },
+  "scripts": {
+    "setup": "node setup.js",
+    "audit": "node core/system-audit.js",
+    "digest": "node core/daily-digest.js",
+    "skills": "node core/skill-registry.js scan",
+    "snapshot": "node core/system-snapshot.js create",
+    "gaps": "node core/gap-detector.js scan",
+    "sync": "node core/cross-project-sync.js scan",
+    "research": "node core/knowledge-accelerator.js"
+  },
+  "keywords": [
+    "ai", "agent", "self-improving", "llm", "claude-code", "ollama",
+    "knowledge-management", "automation", "personal-ai", "operating-system",
+    "axiom", "self-evolving"
+  ],
+  "author": "Yorkis Estevez",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yorkisestevez/axiom"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

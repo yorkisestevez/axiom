@@ -1,0 +1,57 @@
+[
+  {
+    "id": "manual-memo",
+    "name": "Manual useMemo/useCallback",
+    "grep": "useMemo|useCallback",
+    "fileGlob": "*.{tsx,jsx,ts,js}",
+    "finding": "React Compiler now handles memoization automatically",
+    "action": "Remove manual useMemo/useCallback — React Compiler does this for you",
+    "severity": "low"
+  },
+  {
+    "id": "tailwind-v3-classes",
+    "name": "Tailwind v3 deprecated classes",
+    "grep": "bg-gradient-to-|flex-shrink-0|flex-grow-0",
+    "fileGlob": "*.{tsx,jsx,html,css}",
+    "finding": "Tailwind v4 renamed these: bg-gradient-to-* becomes bg-linear-to-*, flex-shrink-0 becomes shrink-0",
+    "action": "Plan Tailwind v4 migration",
+    "severity": "medium"
+  },
+  {
+    "id": "use-client-overuse",
+    "name": "Excessive 'use client' directives",
+    "grep": "\"use client\"|'use client'",
+    "fileGlob": "*.{tsx,jsx}",
+    "finding": "Next.js best practice: default to Server Components, only add 'use client' when needed",
+    "action": "Audit 'use client' usage — many components may work as Server Components",
+    "severity": "low"
+  },
+  {
+    "id": "no-rls",
+    "name": "Missing Row Level Security",
+    "grep": "supabase\\.from\\(|createClient",
+    "fileGlob": "*.{ts,js}",
+    "finding": "Multi-tenant SaaS requires RLS from day 1.",
+    "action": "Verify all Supabase queries are protected by RLS policies",
+    "severity": "high"
+  },
+  {
+    "id": "inline-styles",
+    "name": "Inline styles instead of Tailwind",
+    "grep": "style=\\{|style={{",
+    "fileGlob": "*.{tsx,jsx}",
+    "finding": "Tailwind only — no inline styles.",
+    "action": "Convert inline styles to Tailwind utility classes",
+    "severity": "low"
+  },
+  {
+    "id": "missing-error-boundary",
+    "name": "Missing error boundaries",
+    "grep": "ErrorBoundary|error\\.tsx",
+    "fileGlob": "*.{tsx,jsx}",
+    "finding": "Production apps need error boundaries to prevent full-page crashes.",
+    "action": "Add error.tsx to each route segment in Next.js App Router",
+    "severity": "medium",
+    "invertMatch": true
+  }
+]

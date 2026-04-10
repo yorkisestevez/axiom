@@ -1,0 +1,35 @@
+{
+  "saas-billing": {
+    "label": "SaaS Billing & Payments",
+    "queries": [
+      "Stripe metered billing best practices {year}",
+      "usage-based pricing SaaS implementation patterns",
+      "subscription billing architecture {year}",
+      "Stripe webhooks production error handling {year}"
+    ],
+    "wikiTarget": "technical/patterns/",
+    "relevantProjects": []
+  },
+  "saas-growth": {
+    "label": "SaaS Growth & PLG",
+    "queries": [
+      "product-led growth SaaS implementation {year}",
+      "free tier conversion optimization strategies",
+      "SaaS onboarding best practices {year}",
+      "churn reduction strategies bootstrapped SaaS {year}"
+    ],
+    "wikiTarget": "business/",
+    "relevantProjects": []
+  },
+  "saas-security": {
+    "label": "SaaS Security & Auth",
+    "queries": [
+      "multi-tenant authentication patterns {year}",
+      "RBAC role based access control SaaS {year}",
+      "API rate limiting security best practices {year}",
+      "Supabase RLS row level security advanced patterns"
+    ],
+    "wikiTarget": "technical/",
+    "relevantProjects": []
+  }
+}

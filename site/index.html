@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axiom — The Self-Improving AI Operating System</title>
+  <meta name="description" content="Your AI doesn't just execute tasks. It learns from them, remembers what works, and evolves every day. Open source framework for Claude Code, Ollama, and any LLM.">
+  <meta property="og:title" content="Axiom — The Self-Improving AI Operating System">
+  <meta property="og:description" content="Your AI learns, remembers, and evolves. 14 core modules. Hardware-aware. Open source.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Axiom — The Self-Improving AI Operating System">
+  <meta name="twitter:description" content="Your AI learns, remembers, and evolves. 14 core modules. Hardware-aware. Open source.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwindcss.config = {
+      theme: {
+        extend: {
+          colors: {
+            axiom: { 50: '#f0f4ff', 100: '#dbe4ff', 200: '#bac8ff', 400: '#748ffc', 500: '#4c6ef5', 600: '#3b5bdb', 700: '#364fc7', 900: '#1b2559' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #4c6ef5 0%, #748ffc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b border-gray-100 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <span class="text-xl font-bold">Axiom</span>
+      <div class="flex gap-6 items-center text-sm">
+        <a href="#features" class="text-gray-600 hover:text-gray-900">Features</a>
+        <a href="#architecture" class="text-gray-600 hover:text-gray-900">Architecture</a>
+        <a href="#packs" class="text-gray-600 hover:text-gray-900">Domain Packs</a>
+        <a href="https://github.com/yorkisestevez/axiom" class="bg-axiom-900 text-white px-4 py-2 rounded-lg hover:bg-axiom-700 transition">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-block bg-axiom-50 text-axiom-600 text-sm font-medium px-4 py-1.5 rounded-full mb-6">Open Source &middot; 14 Core Modules &middot; Works with Any LLM</div>
+      <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+        Your AI doesn't just execute.<br><span class="gradient-text">It learns and evolves.</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
+        Axiom is a self-improving AI operating system. It researches patterns daily, remembers what works, detects gaps in your code, and gets smarter with every build session.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="https://github.com/yorkisestevez/axiom" class="bg-axiom-900 text-white px-8 py-3.5 rounded-xl text-lg font-semibold hover:bg-axiom-700 transition">Get Started Free</a>
+        <a href="#demo" class="border-2 border-gray-200 text-gray-700 px-8 py-3.5 rounded-xl text-lg font-semibold hover:border-axiom-400 transition">Watch Demo</a>
+      </div>
+      <p class="text-sm text-gray-400 mt-4">Works with Claude Code, Ollama, Cursor, and any AI assistant</p>
+    </div>
+  </section>
+
+  <!-- Terminal Demo Placeholder -->
+  <section id="demo" class="pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-gray-900 rounded-2xl p-6 shadow-2xl">
+        <div class="flex gap-2 mb-4">
+          <div class="w-3 h-3 rounded-full bg-red-400"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+          <div class="w-3 h-3 rounded-full bg-green-400"></div>
+        </div>
+        <pre class="text-green-400 text-sm leading-relaxed overflow-x-auto"><code>$ node setup.js
+
+  ╔═══════════════════════════════════════╗
+  ║   AXIOM — Self-Improving AI OS        ║
+  ║   Setup Wizard                        ║
+  ╚═══════════════════════════════════════╝
+
+Detecting GPU... Found: NVIDIA RTX 5070 (12288 MB VRAM)
+Detecting Ollama models... Found 8 model(s)
+
+$ node core/system-audit.js
+
+=== AXIOM SYSTEM AUDIT ===
+Ollama: RUNNING
+  Models loaded: qwen2.5-coder:7b (4696MB), gemma4:e4b (3262MB)
+  VRAM: 7958/12288 MB (65%)
+RAM: 14.4/31.8 GB free
+CPU: 3% load
+All systems nominal.
+
+$ node core/knowledge-accelerator.js
+
+=== KNOWLEDGE ACCELERATOR ===
+Year: 2026 | Domains: 11 | Queries: 44
+  [Full-Stack] [AI Engineering] [SaaS Architecture]
+  [Cybersecurity] [Web Design] [AI Latest] ...
+
+  Your AI just got smarter while you slept.</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem/Solution -->
+  <section class="py-20 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-sm font-bold text-red-500 uppercase tracking-wide mb-3">The Problem</h2>
+          <h3 class="text-2xl font-bold mb-4">Every AI framework runs tasks. None of them learn.</h3>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex gap-3"><span class="text-red-400">&#10005;</span> You discover a pattern, use it once, forget it next week</li>
+            <li class="flex gap-3"><span class="text-red-400">&#10005;</span> Same mistakes across different projects</li>
+            <li class="flex gap-3"><span class="text-red-400">&#10005;</span> No memory between sessions</li>
+            <li class="flex gap-3"><span class="text-red-400">&#10005;</span> Research findings disappear into bookmarks</li>
+            <li class="flex gap-3"><span class="text-red-400">&#10005;</span> No awareness of your hardware constraints</li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-sm font-bold text-axiom-500 uppercase tracking-wide mb-3">The Solution</h2>
+          <h3 class="text-2xl font-bold mb-4">Axiom learns from every build session.</h3>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex gap-3"><span class="text-axiom-500">&#10003;</span> Daily research distilled into spaced repetition briefs</li>
+            <li class="flex gap-3"><span class="text-axiom-500">&#10003;</span> Patterns detected in one project, synced to others</li>
+            <li class="flex gap-3"><span class="text-axiom-500">&#10003;</span> Wiki knowledge base with version control</li>
+            <li class="flex gap-3"><span class="text-axiom-500">&#10003;</span> Successful builds auto-extracted as reusable skills</li>
+            <li class="flex gap-3"><span class="text-axiom-500">&#10003;</span> VRAM budgeting, process registry, port management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section id="features" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-4">14 Core Modules. One System.</h2>
+      <p class="text-gray-500 text-center mb-14 max-w-2xl mx-auto">Each module works independently or as part of the full stack. All open source. All configurable.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#128218;</div>
+          <h3 class="font-bold mb-2">Knowledge Accelerator</h3>
+          <p class="text-sm text-gray-500">Daily web research across 11+ domains. Findings distilled into actionable briefs automatically.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#128257;</div>
+          <h3 class="font-bold mb-2">Spaced Repetition</h3>
+          <p class="text-sm text-gray-500">Key findings resurface at optimal intervals (day 1, 3, 7, 14). You actually retain what you learn.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#9881;</div>
+          <h3 class="font-bold mb-2">Auto-Skill Extraction</h3>
+          <p class="text-sm text-gray-500">Successful build patterns automatically become reusable skills. Your AI evolves from experience.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#128736;</div>
+          <h3 class="font-bold mb-2">Self-Modification</h3>
+          <p class="text-sm text-gray-500">Repeated corrections auto-promote to permanent rules. All through a staging system you control.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#128269;</div>
+          <h3 class="font-bold mb-2">Gap Detector</h3>
+          <p class="text-sm text-gray-500">Cross-references new patterns from research against your actual codebase. Finds what you're missing.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#128279;</div>
+          <h3 class="font-bold mb-2">Cross-Project Sync</h3>
+          <p class="text-sm text-gray-500">Detects patterns in one project that are missing from another. Keeps all projects at the same level.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#128680;</div>
+          <h3 class="font-bold mb-2">Failure Replay</h3>
+          <p class="text-sm text-gray-500">Captures failures with structured post-mortems. Periodically re-tests to prevent recurrence.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#128221;</div>
+          <h3 class="font-bold mb-2">Build Journal</h3>
+          <p class="text-sm text-gray-500">Searchable history of everything you've built. Pattern indexing across projects and sessions.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#127899;</div>
+          <h3 class="font-bold mb-2">Hardware-Aware</h3>
+          <p class="text-sm text-gray-500">VRAM budgeting, process registry, port management. Knows your GPU limits before you hit them.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#128190;</div>
+          <h3 class="font-bold mb-2">System Snapshots</h3>
+          <p class="text-sm text-gray-500">One-command portable backup of your entire AI config. Restore or migrate in seconds.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#128209;</div>
+          <h3 class="font-bold mb-2">Skill Registry</h3>
+          <p class="text-sm text-gray-500">Searchable index of all your skills with usage tracking. Know what you have before building new.</p>
+        </div>
+        <div class="card-hover bg-white border border-gray-100 rounded-xl p-6">
+          <div class="text-2xl mb-3">&#128214;</div>
+          <h3 class="font-bold mb-2">Wiki Knowledge Base</h3>
+          <p class="text-sm text-gray-500">Git-versioned, Obsidian-compatible. Staging system ensures AI never overwrites your knowledge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section id="architecture" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Layered Architecture</h2>
+      <div class="space-y-3 font-mono text-sm">
+        <div class="bg-axiom-100 border border-axiom-200 rounded-lg p-4 text-center">
+          <strong>Layer 5: Learning</strong> &mdash; Knowledge Accelerator, Spaced Repetition, Gap Detector
+        </div>
+        <div class="bg-axiom-50 border border-axiom-200 rounded-lg p-4 text-center">
+          <strong>Layer 4: Intelligence</strong> &mdash; Auto-Skill Extraction, Self-Modification, Cross-Project Sync
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
+          <strong>Layer 3: Operations</strong> &mdash; Process Registry, VRAM Management, Port Management
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
+          <strong>Layer 2: Knowledge</strong> &mdash; Wiki Vault, Build Journal, Staging System
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-4 text-center">
+          <strong>Layer 1: Execution</strong> &mdash; Claude Code, Ollama, Gemini, GPT, any LLM
+        </div>
+        <div class="bg-gray-100 border border-gray-200 rounded-lg p-4 text-center">
+          <strong>Layer 0: Hardware</strong> &mdash; GPU VRAM Budgeting, RAM Headroom, Disk Monitoring
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Domain Packs -->
+  <section id="packs" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-4">Domain Packs</h2>
+      <p class="text-gray-500 text-center mb-14 max-w-2xl mx-auto">Pre-built configurations for specific verticals. Drop into your Axiom install and go.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card-hover border-2 border-gray-100 rounded-xl p-6">
+          <div class="text-sm font-bold text-axiom-500 mb-2">STARTER</div>
+          <h3 class="text-xl font-bold mb-2">SaaS Starter Pack</h3>
+          <p class="text-gray-500 text-sm mb-4">Multi-tenant patterns, billing integration, PLG growth domains, startup gap rules.</p>
+          <div class="text-2xl font-bold mb-4">$49</div>
+          <a href="#" class="block text-center bg-axiom-900 text-white py-2.5 rounded-lg hover:bg-axiom-700 transition text-sm font-semibold">Get Pack</a>
+        </div>
+        <div class="card-hover border-2 border-axiom-400 rounded-xl p-6 relative">
+          <div class="absolute -top-3 left-4 bg-axiom-500 text-white text-xs font-bold px-3 py-1 rounded-full">POPULAR</div>
+          <div class="text-sm font-bold text-axiom-500 mb-2">PROFESSIONAL</div>
+          <h3 class="text-xl font-bold mb-2">AI Builder Pack</h3>
+          <p class="text-gray-500 text-sm mb-4">MCP server patterns, agent architecture, Ollama optimization, prompt engineering.</p>
+          <div class="text-2xl font-bold mb-4">$99</div>
+          <a href="#" class="block text-center bg-axiom-900 text-white py-2.5 rounded-lg hover:bg-axiom-700 transition text-sm font-semibold">Get Pack</a>
+        </div>
+        <div class="card-hover border-2 border-gray-100 rounded-xl p-6">
+          <div class="text-sm font-bold text-axiom-500 mb-2">SPECIALIST</div>
+          <h3 class="text-xl font-bold mb-2">Sports Betting Pack</h3>
+          <p class="text-gray-500 text-sm mb-4">Odds pipeline, injury tracking, model evaluation, Foundry-style analysis domains.</p>
+          <div class="text-2xl font-bold mb-4">$149</div>
+          <a href="#" class="block text-center bg-axiom-900 text-white py-2.5 rounded-lg hover:bg-axiom-700 transition text-sm font-semibold">Get Pack</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 bg-axiom-900 text-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to build an AI that evolves?</h2>
+      <p class="text-axiom-200 mb-8">Free and open source. Set up in 5 minutes. Works with any LLM.</p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="https://github.com/yorkisestevez/axiom" class="bg-white text-axiom-900 px-8 py-3.5 rounded-xl text-lg font-semibold hover:bg-axiom-50 transition">Star on GitHub</a>
+        <a href="#notify" class="border-2 border-white/30 text-white px-8 py-3.5 rounded-xl text-lg font-semibold hover:border-white transition">Get Updates</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Email Capture -->
+  <section id="notify" class="py-16 px-6">
+    <div class="max-w-xl mx-auto text-center">
+      <h3 class="text-xl font-bold mb-4">Get notified about new domain packs and updates</h3>
+      <form action="https://buttondown.com/api/emails/embed-subscribe/axiom" method="post" class="flex gap-3">
+        <input type="email" name="email" placeholder="your@email.com" required class="flex-1 px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-axiom-400">
+        <button type="submit" class="bg-axiom-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-axiom-700 transition">Subscribe</button>
+      </form>
+      <p class="text-xs text-gray-400 mt-3">No spam. One email per release. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-gray-100">
+    <div class="max-w-6xl mx-auto flex justify-between items-center text-sm text-gray-400">
+      <span>Built by <a href="https://github.com/yorkisestevez" class="text-gray-600 hover:text-axiom-500">Yorkis Estevez</a></span>
+      <div class="flex gap-6">
+        <a href="https://github.com/yorkisestevez/axiom" class="hover:text-gray-600">GitHub</a>
+        <a href="#" class="hover:text-gray-600">Twitter</a>
+        <span>MIT License</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

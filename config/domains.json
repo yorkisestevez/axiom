@@ -1,0 +1,68 @@
+{
+  "full-stack": {
+    "label": "Full-Stack Patterns",
+    "queries": [
+      "Next.js {year} best practices server components app router",
+      "React {year} performance patterns optimization techniques",
+      "Supabase {year} new features edge functions realtime",
+      "Tailwind CSS {year} new features utilities"
+    ],
+    "wikiTarget": "technical/stack/",
+    "relevantProjects": []
+  },
+  "ai-engineering": {
+    "label": "AI Engineering",
+    "queries": [
+      "AI agent architecture patterns {year} autonomous",
+      "MCP model context protocol server design {year}",
+      "local LLM optimization Ollama VRAM {year}",
+      "Claude API tool use advanced patterns {year}"
+    ],
+    "wikiTarget": "technical/",
+    "relevantProjects": []
+  },
+  "saas-architecture": {
+    "label": "SaaS Architecture",
+    "queries": [
+      "multi-tenant SaaS architecture patterns {year}",
+      "Stripe billing integration best practices {year}",
+      "usage-based pricing implementation SaaS",
+      "serverless edge computing patterns {year}"
+    ],
+    "wikiTarget": "technical/patterns/",
+    "relevantProjects": []
+  },
+  "cybersecurity": {
+    "label": "Cybersecurity",
+    "queries": [
+      "web application security best practices {year} OWASP",
+      "SaaS security architecture zero trust {year}",
+      "API security authentication patterns {year}",
+      "supply chain security npm dependencies {year}"
+    ],
+    "wikiTarget": "technical/",
+    "relevantProjects": []
+  },
+  "business-growth": {
+    "label": "Business & Market",
+    "queries": [
+      "bootstrapped SaaS go-to-market strategy {year}",
+      "software market trends {year}",
+      "AI automation consulting business model {year}",
+      "digital tools market trends {year}"
+    ],
+    "wikiTarget": "business/",
+    "relevantProjects": []
+  },
+  "ai-latest": {
+    "label": "AI Latest & Greatest",
+    "queries": [
+      "latest AI model releases {year} capabilities",
+      "AI use cases business automation {year}",
+      "open source AI models local inference {year}",
+      "AI agent real world production use cases {year}"
+    ],
+    "wikiTarget": "technical/",
+    "relevantProjects": []
+  }
+}

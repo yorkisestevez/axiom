@@ -1,0 +1,12 @@
+{
+  "reserved": {
+    "11434": "ollama"
+  },
+  "ranges": {
+    "dev-servers": [3000, 3010],
+    "vite": [5173, 5180],
+    "builds": [4000, 4099],
+    "mcp": [5000, 5099]
+  },
+  "note": "Check before binding any port. Add your own reserved ports here."
+}

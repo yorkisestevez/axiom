@@ -1,0 +1,60 @@
+[
+  {
+    "id": "no-rls-policies",
+    "name": "Missing RLS Policies",
+    "grep": "CREATE POLICY|enable_rls|row_level_security",
+    "fileGlob": "*.{sql,ts,js}",
+    "finding": "Multi-tenant SaaS must have Row Level Security from day 1. Retrofitting is extremely costly.",
+    "action": "Add RLS policies to all tables that contain tenant data",
+    "severity": "high",
+    "invertMatch": true
+  },
+  {
+    "id": "legacy-stripe-usage",
+    "name": "Legacy Stripe Usage Records",
+    "grep": "usage_records|create_usage_record|usageRecords",
+    "fileGlob": "*.{ts,js}",
+    "finding": "Stripe deprecated usage records API (2025-03-31). Use Meters API instead.",
+    "action": "Migrate to Stripe Meters API",
+    "severity": "high"
+  },
+  {
+    "id": "no-input-validation",
+    "name": "Missing Input Validation",
+    "grep": "z\\.object|z\\.string|schema\\.parse|validateInput",
+    "fileGlob": "*.{ts,js}",
+    "finding": "All user input must be validated at API boundaries using Zod or similar.",
+    "action": "Add Zod schemas to all API route handlers",
+    "severity": "high",
+    "invertMatch": true
+  },
+  {
+    "id": "no-rate-limiting",
+    "name": "Missing API Rate Limiting",
+    "grep": "rateLimit|rateLimiter|throttle",
+    "fileGlob": "*.{ts,js}",
+    "finding": "Production SaaS APIs need rate limiting to prevent abuse and control costs.",
+    "action": "Add rate limiting middleware to all public API routes",
+    "severity": "medium",
+    "invertMatch": true
+  },
+  {
+    "id": "hardcoded-prices",
+    "name": "Hardcoded Pricing",
+    "grep": "price.*=.*\\d{2,}|cost.*=.*\\d{2,}|\\.99|49\\.|99\\.|199\\.",
+    "fileGlob": "*.{ts,js,tsx,jsx}",
+    "finding": "Pricing should come from Stripe or config, not hardcoded values. Makes A/B testing impossible.",
+    "action": "Move all pricing to Stripe price IDs or environment config",
+    "severity": "low"
+  },
+  {
+    "id": "no-error-boundary",
+    "name": "Missing Error Boundaries",
+    "grep": "ErrorBoundary|error\\.tsx|componentDidCatch",
+    "fileGlob": "*.{tsx,jsx}",
+    "finding": "SaaS apps need error boundaries — a crash in billing shouldn't break the dashboard.",
+    "action": "Add error.tsx to each route segment",
+    "severity": "medium",
+    "invertMatch": true
+  }
+]

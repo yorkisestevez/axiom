@@ -2,24 +2,24 @@
 
 **Subreddit:** r/nextjs, r/reactjs, r/webdev, r/SideProject
 
-**Title:** I scanned the top 48 nextjs projects on GitHub for 2026 best-practice gaps. Here's what I found.
+**Title:** I scanned the top 50 supabase projects on GitHub for 2026 best-practice gaps. Here's what I found.
 
 ---
 
 Hey everyone,
 
-I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 48 nextjs projects on GitHub.
+I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 supabase projects on GitHub.
 
 ## The numbers
 
-- **Average score:** 68/100 (out of the top 48 most-starred nextjs projects)
-- **92%** still manual usememo/usecallback
-- **90%** still inline styles instead of tailwind
-- **81%** still console.log in production code
+- **Average score:** 70/100 (out of the top 50 most-starred supabase projects)
+- **82%** still missing error boundaries
+- **68%** still console.log in production code
+- **66%** still readme missing badges
 
 ## The surprising part
 
-92% of the most popular nextjs repos still have **Manual useMemo/useCallback**. These aren't small projects — these are repos with tens of thousands of stars.
+82% of the most popular supabase repos still have **Missing error boundaries**. These aren't small projects — these are repos with tens of thousands of stars.
 
 ## Run it yourself
 

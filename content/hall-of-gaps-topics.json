@@ -1,16 +1,46 @@
 {
   "topics": [
-    { "name": "nextjs", "label": "Next.js" },
-    { "name": "supabase", "label": "Supabase" },
-    { "name": "react", "label": "React" },
-    { "name": "claude", "label": "Claude" },
-    { "name": "ollama", "label": "Ollama" },
-    { "name": "typescript", "label": "TypeScript" },
-    { "name": "tailwindcss", "label": "Tailwind CSS" },
-    { "name": "sveltekit", "label": "SvelteKit" },
-    { "name": "remix", "label": "Remix" },
-    { "name": "astro", "label": "Astro" }
+    {
+      "name": "nextjs",
+      "label": "Next.js"
+    },
+    {
+      "name": "supabase",
+      "label": "Supabase"
+    },
+    {
+      "name": "react",
+      "label": "React"
+    },
+    {
+      "name": "claude",
+      "label": "Claude"
+    },
+    {
+      "name": "ollama",
+      "label": "Ollama"
+    },
+    {
+      "name": "typescript",
+      "label": "TypeScript"
+    },
+    {
+      "name": "tailwindcss",
+      "label": "Tailwind CSS"
+    },
+    {
+      "name": "sveltekit",
+      "label": "SvelteKit"
+    },
+    {
+      "name": "remix",
+      "label": "Remix"
+    },
+    {
+      "name": "astro",
+      "label": "Astro"
+    }
   ],
-  "current_index": 1,
-  "last_run": null
+  "current_index": 2,
+  "last_run": "2026-04-12T11:47:30.803Z"
 }

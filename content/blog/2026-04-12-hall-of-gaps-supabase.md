@@ -1,3 +1,11 @@
+---
+date: 2026-04-12
+title: "Hall of Gaps: Top Supabase Repos on GitHub — 2026-04-12"
+description: "Weekly scan of the top Supabase repos on GitHub for 2026 best-practice gaps. Real data, actionable findings."
+tags: [supabase, code-quality, best-practices, opensource]
+canonical_url: https://axiom-ai.netlify.app/blog/posts/2026-04-12-hall-of-gaps-supabase.html
+---
+
 # Hall of Gaps
 
 ## What 2026 Best Practices the Top 50 supabase Projects Are Missing

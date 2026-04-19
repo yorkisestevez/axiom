@@ -1,3 +1,11 @@
+---
+date: 2026-04-19
+title: "Hall of Gaps: Top React Repos on GitHub — 2026-04-19"
+description: "Weekly scan of the top React repos on GitHub for 2026 best-practice gaps. Real data, actionable findings."
+tags: [react, code-quality, best-practices, opensource]
+canonical_url: https://axiom-ai.netlify.app/blog/posts/2026-04-19-hall-of-gaps-react.html
+---
+
 # Hall of Gaps
 
 ## What 2026 Best Practices the Top 50 react Projects Are Missing

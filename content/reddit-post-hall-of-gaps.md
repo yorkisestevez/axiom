@@ -2,24 +2,24 @@
 
 **Subreddit:** r/nextjs, r/reactjs, r/webdev, r/SideProject
 
-**Title:** I scanned the top 50 react projects on GitHub for 2026 best-practice gaps. Here's what I found.
+**Title:** I scanned the top 50 claude projects on GitHub for 2026 best-practice gaps. Here's what I found.
 
 ---
 
 Hey everyone,
 
-I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 react projects on GitHub.
+I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 claude projects on GitHub.
 
 ## The numbers
 
-- **Average score:** 74/100 (out of the top 50 most-starred react projects)
-- **80%** still console.log in production code
-- **76%** still manual usememo/usecallback
-- **76%** still missing .env.example
+- **Average score:** 75/100 (out of the top 50 most-starred claude projects)
+- **74%** still missing error boundaries
+- **66%** still missing .env.example
+- **62%** still readme missing badges
 
 ## The surprising part
 
-80% of the most popular react repos still have **console.log in production code**. These aren't small projects — these are repos with tens of thousands of stars.
+74% of the most popular claude repos still have **Missing error boundaries**. These aren't small projects — these are repos with tens of thousands of stars.
 
 ## Run it yourself
 

@@ -1,3 +1,11 @@
+---
+date: 2026-04-26
+title: "Hall of Gaps: Top Claude Repos on GitHub — 2026-04-26"
+description: "Weekly scan of the top Claude repos on GitHub for 2026 best-practice gaps. Real data, actionable findings."
+tags: [claude, code-quality, best-practices, opensource]
+canonical_url: https://axiom-ai.netlify.app/blog/posts/2026-04-26-hall-of-gaps-claude.html
+---
+
 # Hall of Gaps
 
 ## What 2026 Best Practices the Top 50 claude Projects Are Missing

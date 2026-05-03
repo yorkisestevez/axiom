@@ -2,52 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://axiom-ai.netlify.app/</loc>
-    <lastmod>2026-04-26T11:55:11.327Z</lastmod>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/</loc>
-    <lastmod>2026-04-26T11:55:11.327Z</lastmod>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://axiom-ai.netlify.app/blog/posts/2026-05-03-hall-of-gaps-ollama.html</loc>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-26-hall-of-gaps-claude.html</loc>
-    <lastmod>2026-04-26T11:55:11.327Z</lastmod>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-19-hall-of-gaps-react.html</loc>
-    <lastmod>2026-04-26T11:55:11.327Z</lastmod>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-12-hall-of-gaps-supabase.html</loc>
-    <lastmod>2026-04-26T11:55:11.327Z</lastmod>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-10-05-vram-budgeting-local-llms.html</loc>
-    <lastmod>2026-04-26T11:55:11.327Z</lastmod>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-10-04-multi-tenant-rls-patterns.html</loc>
-    <lastmod>2026-04-26T11:55:11.327Z</lastmod>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-10-03-react-compiler-usememo-migration.html</loc>
-    <lastmod>2026-04-26T11:55:11.327Z</lastmod>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-10-02-hall-of-gaps-nextjs.html</loc>
-    <lastmod>2026-04-26T11:55:11.327Z</lastmod>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://axiom-ai.netlify.app/blog/posts/2026-04-10-01-self-improving-ai-architecture.html</loc>
-    <lastmod>2026-04-26T11:55:11.327Z</lastmod>
+    <lastmod>2026-05-03T11:58:16.820Z</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>

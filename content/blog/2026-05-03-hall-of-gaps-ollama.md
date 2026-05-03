@@ -1,3 +1,11 @@
+---
+date: 2026-05-03
+title: "Hall of Gaps: Top Ollama Repos on GitHub — 2026-05-03"
+description: "Weekly scan of the top Ollama repos on GitHub for 2026 best-practice gaps. Real data, actionable findings."
+tags: [ollama, code-quality, best-practices, opensource]
+canonical_url: https://axiom-ai.netlify.app/blog/posts/2026-05-03-hall-of-gaps-ollama.html
+---
+
 # Hall of Gaps
 
 ## What 2026 Best Practices the Top 50 ollama Projects Are Missing

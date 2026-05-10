@@ -2,24 +2,24 @@
 
 **Subreddit:** r/nextjs, r/reactjs, r/webdev, r/SideProject
 
-**Title:** I scanned the top 50 ollama projects on GitHub for 2026 best-practice gaps. Here's what I found.
+**Title:** I scanned the top 50 typescript projects on GitHub for 2026 best-practice gaps. Here's what I found.
 
 ---
 
 Hey everyone,
 
-I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 ollama projects on GitHub.
+I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 typescript projects on GitHub.
 
 ## The numbers
 
-- **Average score:** 75/100 (out of the top 50 most-starred ollama projects)
-- **84%** still missing error boundaries
-- **64%** still missing .env.example
-- **60%** still console.log in production code
+- **Average score:** 72/100 (out of the top 50 most-starred typescript projects)
+- **88%** still console.log in production code
+- **76%** still missing error boundaries
+- **66%** still inline styles instead of tailwind
 
 ## The surprising part
 
-84% of the most popular ollama repos still have **Missing error boundaries**. These aren't small projects — these are repos with tens of thousands of stars.
+88% of the most popular typescript repos still have **console.log in production code**. These aren't small projects — these are repos with tens of thousands of stars.
 
 ## Run it yourself
 

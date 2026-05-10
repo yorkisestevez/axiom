@@ -1,3 +1,11 @@
+---
+date: 2026-05-10
+title: "Hall of Gaps: Top TypeScript Repos on GitHub — 2026-05-10"
+description: "Weekly scan of the top TypeScript repos on GitHub for 2026 best-practice gaps. Real data, actionable findings."
+tags: [typescript, code-quality, best-practices, opensource]
+canonical_url: https://axiom-ai.netlify.app/blog/posts/2026-05-10-hall-of-gaps-typescript.html
+---
+
 # Hall of Gaps
 
 ## What 2026 Best Practices the Top 50 typescript Projects Are Missing

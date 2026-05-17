@@ -2,24 +2,24 @@
 
 **Subreddit:** r/nextjs, r/reactjs, r/webdev, r/SideProject
 
-**Title:** I scanned the top 50 typescript projects on GitHub for 2026 best-practice gaps. Here's what I found.
+**Title:** I scanned the top 50 tailwindcss projects on GitHub for 2026 best-practice gaps. Here's what I found.
 
 ---
 
 Hey everyone,
 
-I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 typescript projects on GitHub.
+I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 tailwindcss projects on GitHub.
 
 ## The numbers
 
-- **Average score:** 72/100 (out of the top 50 most-starred typescript projects)
-- **88%** still console.log in production code
-- **76%** still missing error boundaries
-- **66%** still inline styles instead of tailwind
+- **Average score:** 74/100 (out of the top 50 most-starred tailwindcss projects)
+- **74%** still console.log in production code
+- **72%** still missing error boundaries
+- **66%** still tailwind v3 deprecated classes
 
 ## The surprising part
 
-88% of the most popular typescript repos still have **console.log in production code**. These aren't small projects — these are repos with tens of thousands of stars.
+74% of the most popular tailwindcss repos still have **console.log in production code**. These aren't small projects — these are repos with tens of thousands of stars.
 
 ## Run it yourself
 

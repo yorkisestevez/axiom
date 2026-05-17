@@ -1,3 +1,11 @@
+---
+date: 2026-05-17
+title: "Hall of Gaps: Top Tailwind CSS Repos on GitHub — 2026-05-17"
+description: "Weekly scan of the top Tailwind CSS repos on GitHub for 2026 best-practice gaps. Real data, actionable findings."
+tags: [tailwindcss, code-quality, best-practices, opensource]
+canonical_url: https://axiom-ai.netlify.app/blog/posts/2026-05-17-hall-of-gaps-tailwindcss.html
+---
+
 # Hall of Gaps
 
 ## What 2026 Best Practices the Top 50 tailwindcss Projects Are Missing

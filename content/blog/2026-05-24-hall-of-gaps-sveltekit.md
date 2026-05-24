@@ -1,3 +1,11 @@
+---
+date: 2026-05-24
+title: "Hall of Gaps: Top SvelteKit Repos on GitHub — 2026-05-24"
+description: "Weekly scan of the top SvelteKit repos on GitHub for 2026 best-practice gaps. Real data, actionable findings."
+tags: [sveltekit, code-quality, best-practices, opensource]
+canonical_url: https://axiom-ai.netlify.app/blog/posts/2026-05-24-hall-of-gaps-sveltekit.html
+---
+
 # Hall of Gaps
 
 ## What 2026 Best Practices the Top 50 sveltekit Projects Are Missing

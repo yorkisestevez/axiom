@@ -1,3 +1,11 @@
+---
+date: 2026-06-07
+title: "Hall of Gaps: Top Astro Repos on GitHub — 2026-06-07"
+description: "Weekly scan of the top Astro repos on GitHub for 2026 best-practice gaps. Real data, actionable findings."
+tags: [astro, code-quality, best-practices, opensource]
+canonical_url: https://axiom-ai.netlify.app/blog/posts/2026-06-07-hall-of-gaps-astro.html
+---
+
 # Hall of Gaps
 
 ## What 2026 Best Practices the Top 50 astro Projects Are Missing

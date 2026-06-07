@@ -2,24 +2,24 @@
 
 **Subreddit:** r/nextjs, r/reactjs, r/webdev, r/SideProject
 
-**Title:** I scanned the top 50 remix projects on GitHub for 2026 best-practice gaps. Here's what I found.
+**Title:** I scanned the top 50 astro projects on GitHub for 2026 best-practice gaps. Here's what I found.
 
 ---
 
 Hey everyone,
 
-I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 remix projects on GitHub.
+I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 astro projects on GitHub.
 
 ## The numbers
 
-- **Average score:** 78/100 (out of the top 50 most-starred remix projects)
-- **78%** still missing .env.example
-- **68%** still readme missing badges
-- **62%** still console.log in production code
+- **Average score:** 75/100 (out of the top 50 most-starred astro projects)
+- **94%** still missing error boundaries
+- **84%** still missing .env.example
+- **74%** still typescript strict mode disabled
 
 ## The surprising part
 
-78% of the most popular remix repos still have **Missing .env.example**. These aren't small projects — these are repos with tens of thousands of stars.
+94% of the most popular astro repos still have **Missing error boundaries**. These aren't small projects — these are repos with tens of thousands of stars.
 
 ## Run it yourself
 

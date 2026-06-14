@@ -2,24 +2,24 @@
 
 **Subreddit:** r/nextjs, r/reactjs, r/webdev, r/SideProject
 
-**Title:** I scanned the top 50 astro projects on GitHub for 2026 best-practice gaps. Here's what I found.
+**Title:** I scanned the top 50 nextjs projects on GitHub for 2026 best-practice gaps. Here's what I found.
 
 ---
 
 Hey everyone,
 
-I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 astro projects on GitHub.
+I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 nextjs projects on GitHub.
 
 ## The numbers
 
-- **Average score:** 75/100 (out of the top 50 most-starred astro projects)
-- **94%** still missing error boundaries
-- **84%** still missing .env.example
-- **74%** still typescript strict mode disabled
+- **Average score:** 71/100 (out of the top 50 most-starred nextjs projects)
+- **90%** still manual usememo/usecallback
+- **88%** still inline styles instead of tailwind
+- **78%** still console.log in production code
 
 ## The surprising part
 
-94% of the most popular astro repos still have **Missing error boundaries**. These aren't small projects — these are repos with tens of thousands of stars.
+90% of the most popular nextjs repos still have **Manual useMemo/useCallback**. These aren't small projects — these are repos with tens of thousands of stars.
 
 ## Run it yourself
 

@@ -1,3 +1,11 @@
+---
+date: 2026-06-14
+title: "Hall of Gaps: Top Next.js Repos on GitHub — 2026-06-14"
+description: "Weekly scan of the top Next.js repos on GitHub for 2026 best-practice gaps. Real data, actionable findings."
+tags: [nextjs, code-quality, best-practices, opensource]
+canonical_url: https://axiom-ai.netlify.app/blog/posts/2026-06-14-hall-of-gaps-nextjs.html
+---
+
 # Hall of Gaps
 
 ## What 2026 Best Practices the Top 50 nextjs Projects Are Missing

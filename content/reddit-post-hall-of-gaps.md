@@ -2,24 +2,24 @@
 
 **Subreddit:** r/nextjs, r/reactjs, r/webdev, r/SideProject
 
-**Title:** I scanned the top 50 supabase projects on GitHub for 2026 best-practice gaps. Here's what I found.
+**Title:** I scanned the top 50 react projects on GitHub for 2026 best-practice gaps. Here's what I found.
 
 ---
 
 Hey everyone,
 
-I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 supabase projects on GitHub.
+I built a free CLI tool called **[axiom-check](https://github.com/yorkisestevez/axiom-check)** that scans any repo for 2026 best-practice gaps. Then I ran it against the top 50 react projects on GitHub.
 
 ## The numbers
 
-- **Average score:** 71/100 (out of the top 50 most-starred supabase projects)
-- **78%** still missing error boundaries
-- **72%** still console.log in production code
-- **64%** still readme missing badges
+- **Average score:** 75/100 (out of the top 50 most-starred react projects)
+- **80%** still console.log in production code
+- **76%** still manual usememo/usecallback
+- **74%** still inline styles instead of tailwind
 
 ## The surprising part
 
-78% of the most popular supabase repos still have **Missing error boundaries**. These aren't small projects — these are repos with tens of thousands of stars.
+80% of the most popular react repos still have **console.log in production code**. These aren't small projects — these are repos with tens of thousands of stars.
 
 ## Run it yourself
 

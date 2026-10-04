@@ -1,17 +1,17 @@
 # Hall of Gaps
 
-## What 2026 Best Practices the Top 50 typescript Projects Are Missing
+## What 2026 Best Practices the Top 50 tailwindcss Projects Are Missing
 
-> Generated 2026-09-27 by scanning the top 50 GitHub repos tagged **typescript** with [`axiom-check`](https://github.com/yorkisestevez/axiom).
+> Generated 2026-10-04 by scanning the top 50 GitHub repos tagged **tailwindcss** with [`axiom-check`](https://github.com/yorkisestevez/axiom).
 > Run it on your own repo: `npx axiom-check`
 
 ---
 
 ## TL;DR
 
-- **Average Axiom Score:** 71 / 100
+- **Average Axiom Score:** 75 / 100
 - **Repos scanned:** 50
-- **Top 3 gaps** appear in **88% / 70% / 64%** of repos
+- **Top 3 gaps** appear in **74% / 72% / 64%** of repos
 
 ---
 
@@ -19,16 +19,15 @@
 
 | Rank | Gap | Severity | Found In | Distribution |
 |------|-----|----------|----------|--------------|
-| 1 | **console.log in production code** | LOW | 44/50 (88%) | `██████████████████████████░░░░` |
-| 2 | **Missing error boundaries** | MED | 35/50 (70%) | `█████████████████████░░░░░░░░░` |
-| 3 | **Inline styles instead of Tailwind** | LOW | 32/50 (64%) | `███████████████████░░░░░░░░░░░` |
-| 4 | **Manual useMemo/useCallback** | LOW | 31/50 (62%) | `███████████████████░░░░░░░░░░░` |
-| 5 | **Missing .env.example** | LOW | 27/50 (54%) | `████████████████░░░░░░░░░░░░░░` |
-| 6 | **Missing Row Level Security** | HIGH | 23/50 (46%) | `██████████████░░░░░░░░░░░░░░░░` |
-| 7 | **README missing badges** | LOW | 20/50 (40%) | `████████████░░░░░░░░░░░░░░░░░░` |
-| 8 | **Tailwind v3 deprecated classes** | MED | 17/50 (34%) | `██████████░░░░░░░░░░░░░░░░░░░░` |
-| 9 | **Possible hardcoded secrets** | HIGH | 8/50 (16%) | `█████░░░░░░░░░░░░░░░░░░░░░░░░░` |
-| 10 | **TypeScript strict mode disabled** | MED | 7/50 (14%) | `████░░░░░░░░░░░░░░░░░░░░░░░░░░` |
+| 1 | **Missing error boundaries** | MED | 37/50 (74%) | `██████████████████████░░░░░░░░` |
+| 2 | **console.log in production code** | LOW | 36/50 (72%) | `██████████████████████░░░░░░░░` |
+| 3 | **Tailwind v3 deprecated classes** | MED | 32/50 (64%) | `███████████████████░░░░░░░░░░░` |
+| 4 | **Inline styles instead of Tailwind** | LOW | 32/50 (64%) | `███████████████████░░░░░░░░░░░` |
+| 5 | **Missing .env.example** | LOW | 32/50 (64%) | `███████████████████░░░░░░░░░░░` |
+| 6 | **Manual useMemo/useCallback** | LOW | 31/50 (62%) | `███████████████████░░░░░░░░░░░` |
+| 7 | **README missing badges** | LOW | 29/50 (58%) | `█████████████████░░░░░░░░░░░░░` |
+| 8 | **TypeScript strict mode disabled** | MED | 10/50 (20%) | `██████░░░░░░░░░░░░░░░░░░░░░░░░` |
+| 9 | **Missing Row Level Security** | HIGH | 9/50 (18%) | `█████░░░░░░░░░░░░░░░░░░░░░░░░░` |
 
 ---
 
@@ -36,21 +35,21 @@
 
 Lowest scores — the most gaps per repo:
 
-1. **Repo A** — Score: **38/100** — 7 gaps (41,003 stars)
-2. **Repo B** — Score: **42/100** — 8 gaps (96,051 stars)
-3. **Repo C** — Score: **45/100** — 7 gaps (108,537 stars)
-4. **Repo D** — Score: **45/100** — 7 gaps (73,372 stars)
-5. **Repo E** — Score: **50/100** — 7 gaps (193,169 stars)
+1. **Repo A** — Score: **60/100** — 6 gaps (29,151 stars)
+2. **Repo B** — Score: **60/100** — 6 gaps (10,482 stars)
+3. **Repo C** — Score: **62/100** — 7 gaps (13,291 stars)
+4. **Repo D** — Score: **63/100** — 5 gaps (12,182 stars)
+5. **Repo E** — Score: **65/100** — 6 gaps (48,857 stars)
 
 ## Hall of Fame
 
 Highest scores — the cleanest repos:
 
-1. **ruvnet/RuView** — Score: **91/100** — 3 gaps (95,179 stars)
-2. **ionic-team/ionic-framework** — Score: **88/100** — 4 gaps (52,684 stars)
-3. **ant-design/ant-design** — Score: **88/100** — 4 gaps (99,621 stars)
-4. **headroomlabs-ai/headroom** — Score: **86/100** — 3 gaps (73,938 stars)
-5. **bytedance/deer-flow** — Score: **86/100** — 3 gaps (83,045 stars)
+1. **nativewind/nativewind** — Score: **89/100** — 2 gaps (8,105 stars)
+2. **ixartz/Next-js-Boilerplate** — Score: **89/100** — 2 gaps (13,079 stars)
+3. **JCodesMore/ai-website-cloner-template** — Score: **89/100** — 2 gaps (35,612 stars)
+4. **kriasoft/react-starter-kit** — Score: **88/100** — 4 gaps (23,687 stars)
+5. **plausible/analytics** — Score: **88/100** — 4 gaps (29,309 stars)
 
 ---
 

@@ -1,17 +1,17 @@
 # Hall of Gaps
 
-## What 2026 Best Practices the Top 50 remix Projects Are Missing
+## What 2026 Best Practices the Top 50 astro Projects Are Missing
 
-> Generated 2026-10-18 by scanning the top 50 GitHub repos tagged **remix** with [`axiom-check`](https://github.com/yorkisestevez/axiom).
+> Generated 2026-10-25 by scanning the top 50 GitHub repos tagged **astro** with [`axiom-check`](https://github.com/yorkisestevez/axiom).
 > Run it on your own repo: `npx axiom-check`
 
 ---
 
 ## TL;DR
 
-- **Average Axiom Score:** 79 / 100
+- **Average Axiom Score:** 77 / 100
 - **Repos scanned:** 50
-- **Top 3 gaps** appear in **76% / 72% / 62%** of repos
+- **Top 3 gaps** appear in **92% / 76% / 66%** of repos
 
 ---
 
@@ -19,16 +19,16 @@
 
 | Rank | Gap | Severity | Found In | Distribution |
 |------|-----|----------|----------|--------------|
-| 1 | **Missing .env.example** | LOW | 38/50 (76%) | `███████████████████████░░░░░░░` |
-| 2 | **README missing badges** | LOW | 36/50 (72%) | `██████████████████████░░░░░░░░` |
-| 3 | **console.log in production code** | LOW | 31/50 (62%) | `███████████████████░░░░░░░░░░░` |
-| 4 | **Missing error boundaries** | MED | 27/50 (54%) | `████████████████░░░░░░░░░░░░░░` |
-| 5 | **Inline styles instead of Tailwind** | LOW | 25/50 (50%) | `███████████████░░░░░░░░░░░░░░░` |
-| 6 | **Manual useMemo/useCallback** | LOW | 25/50 (50%) | `███████████████░░░░░░░░░░░░░░░` |
-| 7 | **TypeScript strict mode disabled** | MED | 16/50 (32%) | `██████████░░░░░░░░░░░░░░░░░░░░` |
-| 8 | **Tailwind v3 deprecated classes** | MED | 13/50 (26%) | `████████░░░░░░░░░░░░░░░░░░░░░░` |
-| 9 | **Missing Row Level Security** | HIGH | 8/50 (16%) | `█████░░░░░░░░░░░░░░░░░░░░░░░░░` |
-| 10 | **Possible hardcoded secrets** | HIGH | 1/50 (2%) | `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` |
+| 1 | **Missing error boundaries** | MED | 46/50 (92%) | `████████████████████████████░░` |
+| 2 | **Missing .env.example** | LOW | 38/50 (76%) | `███████████████████████░░░░░░░` |
+| 3 | **TypeScript strict mode disabled** | MED | 33/50 (66%) | `████████████████████░░░░░░░░░░` |
+| 4 | **README missing badges** | LOW | 33/50 (66%) | `████████████████████░░░░░░░░░░` |
+| 5 | **console.log in production code** | LOW | 25/50 (50%) | `███████████████░░░░░░░░░░░░░░░` |
+| 6 | **Inline styles instead of Tailwind** | LOW | 15/50 (30%) | `█████████░░░░░░░░░░░░░░░░░░░░░` |
+| 7 | **Manual useMemo/useCallback** | LOW | 13/50 (26%) | `████████░░░░░░░░░░░░░░░░░░░░░░` |
+| 8 | **Tailwind v3 deprecated classes** | MED | 8/50 (16%) | `█████░░░░░░░░░░░░░░░░░░░░░░░░░` |
+| 9 | **Missing Row Level Security** | HIGH | 4/50 (8%) | `██░░░░░░░░░░░░░░░░░░░░░░░░░░░░` |
+| 10 | **Missing input validation** | HIGH | 1/50 (2%) | `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` |
 
 ---
 
@@ -36,21 +36,21 @@
 
 Lowest scores — the most gaps per repo:
 
-1. **Repo A** — Score: **39/100** — 9 gaps (387 stars)
-2. **Repo B** — Score: **53/100** — 6 gaps (3,074 stars)
-3. **Repo C** — Score: **62/100** — 7 gaps (9,084 stars)
-4. **Repo D** — Score: **65/100** — 6 gaps (512 stars)
-5. **Repo E** — Score: **68/100** — 5 gaps (33,414 stars)
+1. **Repo A** — Score: **46/100** — 6 gaps (1,770 stars)
+2. **Repo B** — Score: **49/100** — 8 gaps (939 stars)
+3. **Repo C** — Score: **61/100** — 8 gaps (1,168 stars)
+4. **Repo D** — Score: **65/100** — 6 gaps (13,945 stars)
+5. **Repo E** — Score: **65/100** — 6 gaps (2,003 stars)
 
 ## Hall of Fame
 
 Highest scores — the cleanest repos:
 
-1. **SteveSuv/remix-words-funny** — Score: **94/100** — 2 gaps (1,593 stars)
-2. **rileytomasek/zodix** — Score: **91/100** — 3 gaps (374 stars)
-3. **code-forge-io/remix-hook-form** — Score: **91/100** — 3 gaps (453 stars)
-4. **yesmeck/safe-routes** — Score: **91/100** — 3 gaps (513 stars)
-5. **dev-xo/remix-auth-totp** — Score: **89/100** — 2 gaps (481 stars)
+1. **incluud/accessible-astro-starter** — Score: **92/100** — 1 gaps (1,190 stars)
+2. **withastro/astro** — Score: **91/100** — 3 gaps (63,456 stars)
+3. **jdevalk/specification.website** — Score: **89/100** — 2 gaps (913 stars)
+4. **awesome-reveal/awesome-reveal** — Score: **86/100** — 3 gaps (1,192 stars)
+5. **alxshelepenok/lumen** — Score: **86/100** — 3 gaps (2,018 stars)
 
 ---
 

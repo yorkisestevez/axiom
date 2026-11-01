@@ -1,17 +1,17 @@
 # Hall of Gaps
 
-## What 2026 Best Practices the Top 50 astro Projects Are Missing
+## What 2026 Best Practices the Top 50 nextjs Projects Are Missing
 
-> Generated 2026-10-25 by scanning the top 50 GitHub repos tagged **astro** with [`axiom-check`](https://github.com/yorkisestevez/axiom).
+> Generated 2026-11-01 by scanning the top 50 GitHub repos tagged **nextjs** with [`axiom-check`](https://github.com/yorkisestevez/axiom).
 > Run it on your own repo: `npx axiom-check`
 
 ---
 
 ## TL;DR
 
-- **Average Axiom Score:** 77 / 100
+- **Average Axiom Score:** 70 / 100
 - **Repos scanned:** 50
-- **Top 3 gaps** appear in **92% / 76% / 66%** of repos
+- **Top 3 gaps** appear in **94% / 92% / 82%** of repos
 
 ---
 
@@ -19,16 +19,16 @@
 
 | Rank | Gap | Severity | Found In | Distribution |
 |------|-----|----------|----------|--------------|
-| 1 | **Missing error boundaries** | MED | 46/50 (92%) | `████████████████████████████░░` |
-| 2 | **Missing .env.example** | LOW | 38/50 (76%) | `███████████████████████░░░░░░░` |
-| 3 | **TypeScript strict mode disabled** | MED | 33/50 (66%) | `████████████████████░░░░░░░░░░` |
-| 4 | **README missing badges** | LOW | 33/50 (66%) | `████████████████████░░░░░░░░░░` |
-| 5 | **console.log in production code** | LOW | 25/50 (50%) | `███████████████░░░░░░░░░░░░░░░` |
-| 6 | **Inline styles instead of Tailwind** | LOW | 15/50 (30%) | `█████████░░░░░░░░░░░░░░░░░░░░░` |
-| 7 | **Manual useMemo/useCallback** | LOW | 13/50 (26%) | `████████░░░░░░░░░░░░░░░░░░░░░░` |
-| 8 | **Tailwind v3 deprecated classes** | MED | 8/50 (16%) | `█████░░░░░░░░░░░░░░░░░░░░░░░░░` |
-| 9 | **Missing Row Level Security** | HIGH | 4/50 (8%) | `██░░░░░░░░░░░░░░░░░░░░░░░░░░░░` |
-| 10 | **Missing input validation** | HIGH | 1/50 (2%) | `█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░` |
+| 1 | **Manual useMemo/useCallback** | LOW | 47/50 (94%) | `████████████████████████████░░` |
+| 2 | **Inline styles instead of Tailwind** | LOW | 46/50 (92%) | `████████████████████████████░░` |
+| 3 | **console.log in production code** | LOW | 41/50 (82%) | `█████████████████████████░░░░░` |
+| 4 | **Tailwind v3 deprecated classes** | MED | 34/50 (68%) | `████████████████████░░░░░░░░░░` |
+| 5 | **README missing badges** | LOW | 30/50 (60%) | `██████████████████░░░░░░░░░░░░` |
+| 6 | **Missing error boundaries** | MED | 25/50 (50%) | `███████████████░░░░░░░░░░░░░░░` |
+| 7 | **Missing Row Level Security** | HIGH | 21/50 (42%) | `█████████████░░░░░░░░░░░░░░░░░` |
+| 8 | **Missing .env.example** | LOW | 13/50 (26%) | `████████░░░░░░░░░░░░░░░░░░░░░░` |
+| 9 | **Possible hardcoded secrets** | HIGH | 9/50 (18%) | `█████░░░░░░░░░░░░░░░░░░░░░░░░░` |
+| 10 | **TypeScript strict mode disabled** | MED | 7/50 (14%) | `████░░░░░░░░░░░░░░░░░░░░░░░░░░` |
 
 ---
 
@@ -36,21 +36,21 @@
 
 Lowest scores — the most gaps per repo:
 
-1. **Repo A** — Score: **46/100** — 6 gaps (1,770 stars)
-2. **Repo B** — Score: **49/100** — 8 gaps (939 stars)
-3. **Repo C** — Score: **61/100** — 8 gaps (1,168 stars)
-4. **Repo D** — Score: **65/100** — 6 gaps (13,945 stars)
-5. **Repo E** — Score: **65/100** — 6 gaps (2,003 stars)
+1. **Repo A** — Score: **42/100** — 8 gaps (38,173 stars)
+2. **Repo B** — Score: **50/100** — 7 gaps (29,955 stars)
+3. **Repo C** — Score: **53/100** — 6 gaps (38,450 stars)
+4. **Repo D** — Score: **53/100** — 6 gaps (35,974 stars)
+5. **Repo E** — Score: **57/100** — 7 gaps (40,758 stars)
 
 ## Hall of Fame
 
 Highest scores — the cleanest repos:
 
-1. **incluud/accessible-astro-starter** — Score: **92/100** — 1 gaps (1,190 stars)
-2. **withastro/astro** — Score: **91/100** — 3 gaps (63,456 stars)
-3. **jdevalk/specification.website** — Score: **89/100** — 2 gaps (913 stars)
-4. **awesome-reveal/awesome-reveal** — Score: **86/100** — 3 gaps (1,192 stars)
-5. **alxshelepenok/lumen** — Score: **86/100** — 3 gaps (2,018 stars)
+1. **JCodesMore/ai-website-cloner-template** — Score: **89/100** — 2 gaps (38,355 stars)
+2. **SigNoz/signoz** — Score: **88/100** — 4 gaps (32,494 stars)
+3. **srbhr/Resume-Matcher** — Score: **86/100** — 3 gaps (29,029 stars)
+4. **vercel/swr** — Score: **85/100** — 5 gaps (32,492 stars)
+5. **shadcn-ui/ui** — Score: **83/100** — 4 gaps (127,119 stars)
 
 ---
 

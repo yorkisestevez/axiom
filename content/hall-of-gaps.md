@@ -1,17 +1,17 @@
 # Hall of Gaps
 
-## What 2026 Best Practices the Top 50 nextjs Projects Are Missing
+## What 2026 Best Practices the Top 50 supabase Projects Are Missing
 
-> Generated 2026-11-01 by scanning the top 50 GitHub repos tagged **nextjs** with [`axiom-check`](https://github.com/yorkisestevez/axiom).
+> Generated 2026-11-08 by scanning the top 50 GitHub repos tagged **supabase** with [`axiom-check`](https://github.com/yorkisestevez/axiom).
 > Run it on your own repo: `npx axiom-check`
 
 ---
 
 ## TL;DR
 
-- **Average Axiom Score:** 70 / 100
+- **Average Axiom Score:** 72 / 100
 - **Repos scanned:** 50
-- **Top 3 gaps** appear in **94% / 92% / 82%** of repos
+- **Top 3 gaps** appear in **76% / 74% / 60%** of repos
 
 ---
 
@@ -19,16 +19,16 @@
 
 | Rank | Gap | Severity | Found In | Distribution |
 |------|-----|----------|----------|--------------|
-| 1 | **Manual useMemo/useCallback** | LOW | 47/50 (94%) | `████████████████████████████░░` |
-| 2 | **Inline styles instead of Tailwind** | LOW | 46/50 (92%) | `████████████████████████████░░` |
-| 3 | **console.log in production code** | LOW | 41/50 (82%) | `█████████████████████████░░░░░` |
-| 4 | **Tailwind v3 deprecated classes** | MED | 34/50 (68%) | `████████████████████░░░░░░░░░░` |
-| 5 | **README missing badges** | LOW | 30/50 (60%) | `██████████████████░░░░░░░░░░░░` |
-| 6 | **Missing error boundaries** | MED | 25/50 (50%) | `███████████████░░░░░░░░░░░░░░░` |
-| 7 | **Missing Row Level Security** | HIGH | 21/50 (42%) | `█████████████░░░░░░░░░░░░░░░░░` |
-| 8 | **Missing .env.example** | LOW | 13/50 (26%) | `████████░░░░░░░░░░░░░░░░░░░░░░` |
-| 9 | **Possible hardcoded secrets** | HIGH | 9/50 (18%) | `█████░░░░░░░░░░░░░░░░░░░░░░░░░` |
-| 10 | **TypeScript strict mode disabled** | MED | 7/50 (14%) | `████░░░░░░░░░░░░░░░░░░░░░░░░░░` |
+| 1 | **Missing error boundaries** | MED | 38/50 (76%) | `███████████████████████░░░░░░░` |
+| 2 | **console.log in production code** | LOW | 37/50 (74%) | `██████████████████████░░░░░░░░` |
+| 3 | **Inline styles instead of Tailwind** | LOW | 30/50 (60%) | `██████████████████░░░░░░░░░░░░` |
+| 4 | **Manual useMemo/useCallback** | LOW | 28/50 (56%) | `█████████████████░░░░░░░░░░░░░` |
+| 5 | **README missing badges** | LOW | 28/50 (56%) | `█████████████████░░░░░░░░░░░░░` |
+| 6 | **Tailwind v3 deprecated classes** | MED | 21/50 (42%) | `█████████████░░░░░░░░░░░░░░░░░` |
+| 7 | **Missing .env.example** | LOW | 17/50 (34%) | `██████████░░░░░░░░░░░░░░░░░░░░` |
+| 8 | **TypeScript strict mode disabled** | MED | 16/50 (32%) | `██████████░░░░░░░░░░░░░░░░░░░░` |
+| 9 | **Missing Row Level Security** | HIGH | 15/50 (30%) | `█████████░░░░░░░░░░░░░░░░░░░░░` |
+| 10 | **Missing input validation** | HIGH | 7/50 (14%) | `████░░░░░░░░░░░░░░░░░░░░░░░░░░` |
 
 ---
 
@@ -36,21 +36,21 @@
 
 Lowest scores — the most gaps per repo:
 
-1. **Repo A** — Score: **42/100** — 8 gaps (38,173 stars)
-2. **Repo B** — Score: **50/100** — 7 gaps (29,955 stars)
-3. **Repo C** — Score: **53/100** — 6 gaps (38,450 stars)
-4. **Repo D** — Score: **53/100** — 6 gaps (35,974 stars)
-5. **Repo E** — Score: **57/100** — 7 gaps (40,758 stars)
+1. **Repo A** — Score: **42/100** — 8 gaps (1,541 stars)
+2. **Repo B** — Score: **50/100** — 7 gaps (3,118 stars)
+3. **Repo C** — Score: **53/100** — 6 gaps (7,708 stars)
+4. **Repo D** — Score: **53/100** — 6 gaps (1,819 stars)
+5. **Repo E** — Score: **56/100** — 5 gaps (1,420 stars)
 
 ## Hall of Fame
 
 Highest scores — the cleanest repos:
 
-1. **JCodesMore/ai-website-cloner-template** — Score: **89/100** — 2 gaps (38,355 stars)
-2. **SigNoz/signoz** — Score: **88/100** — 4 gaps (32,494 stars)
-3. **srbhr/Resume-Matcher** — Score: **86/100** — 3 gaps (29,029 stars)
-4. **vercel/swr** — Score: **85/100** — 5 gaps (32,492 stars)
-5. **shadcn-ui/ui** — Score: **83/100** — 4 gaps (127,119 stars)
+1. **melgarafael/DeskcommCRM** — Score: **91/100** — 3 gaps (5,277 stars)
+2. **supabase/postgrest-js** — Score: **86/100** — 3 gaps (1,242 stars)
+3. **supabase/cli** — Score: **86/100** — 3 gaps (2,459 stars)
+4. **kossakovsky/selfhost-ai** — Score: **84/100** — 2 gaps (958 stars)
+5. **TencentCloudBase/CloudBase-AI-Toolkit** — Score: **83/100** — 4 gaps (1,162 stars)
 
 ---
 
